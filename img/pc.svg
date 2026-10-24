@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 300" role="img" aria-label="Máy tính minh họa">
+<rect x="30" y="60" width="240" height="155" rx="10" fill="#353b46" stroke="#667080" stroke-width="3"/>
+<rect x="42" y="72" width="216" height="130" rx="4" fill="#15181e"/>
+<path d="M50 190L155 90L250 190" fill="none" stroke="#ffd400" stroke-width="7"/>
+<path d="M105 155L155 108L205 155" fill="none" stroke="#fff" stroke-width="2" opacity=".5"/>
+<path d="M140 216v22h-40v10h100v-10h-40v-22" fill="#667080"/>
+<rect x="293" y="40" width="90" height="210" rx="10" fill="#2c323d" stroke="#667080" stroke-width="3"/>
+<circle cx="338" cy="96" r="25" fill="#15181e" stroke="#ffd400" stroke-width="6"/>
+<circle cx="338" cy="165" r="25" fill="#15181e" stroke="#ffd400" stroke-width="6"/>
+<circle cx="338" cy="96" r="8" fill="#ffd400"/><circle cx="338" cy="165" r="8" fill="#ffd400"/>
+<circle cx="338" cy="220" r="4" fill="#fff"/>
+<path d="M65 267h210" stroke="#667080" stroke-width="9" stroke-linecap="round"/>
+</svg>

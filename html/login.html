@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Đăng nhập tài khoản PC Store - Website bán máy tính."/>
+
+    <title>Đăng nhập | PC Store</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../css/auth-demo.css" />
+
+    <script src="../js/jquery-4.0.0.min.js" defer></script>
+    <script src="../js/bootstrap.bundle.min.js" defer></script>
+    <script src="../js/storage.js" defer></script>
+    <script src="../js/validation.js" defer></script>
+    <script src="../js/auth.js" defer></script>
+  </head>
+
+  <body class="auth-page">
+    <!-- HEADER -->
+    <header class="demo-header">
+      <div class="container header-inner">
+        <a class="logo" href="login.html"> PC<span>Store</span> </a>
+
+        <nav class="header-nav" aria-label="Điều hướng tài khoản">
+          <a href="login.html" class="active" aria-current="page">
+            Đăng nhập
+          </a>
+
+          <a href="register.html"> Đăng ký </a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- MAIN -->
+    <main class="auth-main">
+      <div class="container">
+        <section class="form-layout">
+          <!-- GIỚI THIỆU -->
+          <div class="form-art">
+            <div class="art-content">
+              <span class="eyebrow"> WELCOME TO PC STORE </span>
+
+              <h1>
+                Góc máy mới.<br />
+                <span>Cảm hứng mới.</span>
+              </h1>
+
+              <p>
+                Khám phá thế giới PC và tìm kiếm cấu hình phù hợp với nhu cầu
+                của bạn.
+              </p>
+            </div>
+
+            <div class="art-image">
+              <img src="../img/pc.svg" alt="Máy tính PC Gaming" />
+            </div>
+          </div>
+
+          <!-- FORM ĐĂNG NHẬP -->
+          <div class="form-side">
+            <section id="auth-session" aria-live="polite" hidden></section>
+
+            <div id="auth-form-area" class="auth-form-content">
+              <div class="form-heading">
+                <h2>Chào mừng trở lại!</h2>
+
+                <p class="muted">Đăng nhập để tiếp tục với PC Store.</p>
+              </div>
+              <div id="form-message" aria-live="polite"></div>
+              <form id="login-form" class="validated-form" novalidate>
+                <!-- EMAIL -->
+                <div class="form-group">
+                  <label class="form-label" for="email"> Email </label>
+
+                  <input
+                    class="form-control"
+                    id="email"
+                    name="email"
+                    type="email"
+                    aria-describedby="email-error"
+                    autocomplete="email"
+                    maxlength="120"
+                    placeholder="ban@example.com"
+                    required
+                  />
+
+                  <div id="email-error" class="invalid-feedback"></div>
+                </div>
+
+                <!-- PASSWORD -->
+                <div class="form-group">
+                  <label class="form-label" for="password"> Mật khẩu </label>
+
+                  <input
+                    class="form-control"
+                    id="password"
+                    name="password"
+                    type="password"
+                    aria-describedby="password-error"
+                    autocomplete="current-password"
+                    maxlength="64"
+                    placeholder="Nhập mật khẩu"
+                    required
+                  />
+
+                  <div id="password-error" class="invalid-feedback"></div>
+
+                  <button
+                    type="button"
+                    class="text-button"
+                    data-toggle-password="password"
+                    aria-controls="password"
+                    aria-pressed="false"
+                  >
+                    Hiện mật khẩu
+                  </button>
+                </div>
+
+                <!-- SUBMIT -->
+                <button type="submit" class="btn btn-yellow w-100 login-submit">
+                  Đăng nhập →
+                </button>
+              </form>
+
+              <!-- ĐĂNG KÝ -->
+              <p class="form-links">
+                Chưa có tài khoản?
+
+                <a id="register-link" href="register.html"> Đăng ký ngay </a>
+              </p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="demo-footer">
+      <div class="container footer-inner">
+        <div class="footer-brand">PC<span>Store</span></div>
+        <p>© PC Store · Website demo</p>
+      </div>
+    </footer>
+  </body>
+</html>
