@@ -790,3 +790,74 @@ window.onload = function () {
     });
   }
 };
+
+
+
+
+// =======================================================
+// BỔ SUNG: TỰ ĐỘNG CHÈN NÚT "XEM CHI TIẾT" VÀ CHUYỂN TRANG
+// =======================================================
+
+// Hàm lưu sản phẩm vào LocalStorage và chuyển sang trang chi tiết
+function chuyenTrangChiTiet(idSp) {
+  var sp = null;
+  for (var i = 0; i < dsSanPham.length; i++) {
+    if (dsSanPham[i].id === Number(idSp)) {
+      sp = dsSanPham[i];
+      break;
+    }
+  }
+  if (!sp) return;
+
+  // Lưu thông tin vào LocalStorage
+  localStorage.setItem("spDangXem", JSON.stringify(sp));
+  localStorage.setItem("selected_product_id", sp.id);
+
+  // Điều hướng sang trang chi tiết
+  window.location.href = "chitiet.html";
+}
+
+// Bắt sự kiện click vào nút "Chi tiết" được chèn thêm
+document.addEventListener("click", function (e) {
+  var btn = e.target.closest(".nut-xem-ct-tudong");
+  if (btn) {
+    e.preventDefault();
+    e.stopPropagation();
+    var id = btn.getAttribute("data-id");
+    if (id) chuyenTrangChiTiet(id);
+  }
+});
+
+// Tự động chèn nút "Chi tiết" vào cạnh nút "+ Giỏ hàng" của mỗi thẻ máy tính
+function tuDongChenNutChiTiet() {
+  var cacChanThe = document.querySelectorAll("#khungSanPham .chan-the");
+  cacChanThe.forEach(function (chanThe) {
+    if (!chanThe.querySelector(".nut-xem-ct-tudong")) {
+      var nutMua = chanThe.querySelector(".nut-mua");
+      if (nutMua) {
+        var onclickStr = nutMua.getAttribute("onclick") || "";
+        var match = onclickStr.match(/\d+/);
+        if (match) {
+          var id = match[0];
+          var nutCt = document.createElement("button");
+          nutCt.type = "button";
+          nutCt.className = "nut-xem-ct-tudong";
+          nutCt.setAttribute("data-id", id);
+          nutCt.innerText = "Chi tiết";
+          nutCt.style.cssText = "margin-right: 6px; padding: 4px 8px; background: #fff; border: 1px solid #dc2626; color: #dc2626; border-radius: 4px; font-weight: 600; font-size: 13px; cursor: pointer;";
+          chanThe.insertBefore(nutCt, nutMua);
+        }
+      }
+    }
+  });
+}
+
+// Lắng nghe thay đổi khi lọc/phân trang để luôn có nút "Chi tiết"
+var observer = new MutationObserver(tuDongChenNutChiTiet);
+window.addEventListener("DOMContentLoaded", function () {
+  var khung = document.getElementById("khungSanPham");
+  if (khung) {
+    observer.observe(khung, { childList: true, subtree: true });
+    tuDongChenNutChiTiet();
+  }
+});

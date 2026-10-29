@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chi Tiết Sản Phẩm - Hệ Thống Bộ PC</title>
+  <meta name="description" content="Bộ PC - Chuyên cung cấp PC Gaming, PC Văn Phòng, Màn hình và Linh kiện máy tính chính hãng 100%.">
+  <link rel="stylesheet" href="css/style.css">
+  
+</head>
+<body>
+
+  <!-- ========================================================================
+       1. TOP HEADER (GIỮ NGUYÊN 100% BẢN GỐC CỦA NHÓM)
+       ======================================================================== -->
+  <header id="top-header">
+    <div class="container header-wrapper">
+      
+      <!-- Brand Logo "Bộ PC" -->
+      <a href="index.html" class="brand-logo" aria-label="Bộ PC Trang Chủ">
+        <div class="logo-icon-wrapper">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="4" y="2" width="16" height="20" rx="2"></rect>
+            <circle cx="12" cy="14" r="3"></circle>
+            <line x1="12" y1="6" x2="12.01" y2="6"></line>
+            <line x1="9" y1="18" x2="15" y2="18"></line>
+          </svg>
+        </div>
+        <span class="logo-brand-name">Bộ PC</span>
+      </a>
+
+      <!-- Quick Search Bar -->
+      <div class="header-search">
+        <form class="search-form" action="#" method="get" role="search">
+          <input 
+            type="search" 
+            class="search-input" 
+            placeholder="Bạn cần tìm gì hôm nay? (PC Gaming, RTX 4070, Core i7...)" 
+            aria-label="Tìm kiếm sản phẩm"
+            required
+          >
+          <button type="submit" class="search-submit-btn" aria-label="Tìm kiếm">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </button>
+        </form>
+      </div>
+
+      <!-- Action Shortcuts Group -->
+      <div class="header-actions">
+        
+        <!-- Tra cứu đơn hàng -->
+        <a href="#tracking" class="action-item" title="Tra cứu tiến độ giao hàng">
+          <div class="action-icon-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="1" y="3" width="15" height="13"></rect>
+              <polygon points="16 8 20 8 23 11 23 16 16 16 8"></polygon>
+              <circle cx="5.5" cy="18.5" r="2.5"></circle>
+              <circle cx="18.5" cy="18.5" r="2.5"></circle>
+            </svg>
+          </div>
+          <div class="action-text">
+            <span class="action-label">Tra cứu</span>
+            <span class="action-value">Đơn hàng</span>
+          </div>
+        </a>
+
+        <!-- Giỏ hàng -->
+        <a href="gio-hang.html" class="action-item action-cart" title="Giỏ hàng của bạn">
+          <div class="action-icon-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <path d="M16 10a4 4 0 0 1-8 0"></path>
+            </svg>
+            <span class="cart-badge">0</span>
+          </div>
+          <div class="action-text">
+            <span class="action-label">Giỏ hàng</span>
+            <span class="action-value">(0) sản phẩm</span>
+          </div>
+        </a>
+
+        <!-- Tài khoản -->
+        <a href="#account" class="action-item" title="Đăng nhập hoặc đăng ký tài khoản" data-auth-modal="login">
+          <div class="action-icon-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+          </div>
+          <div class="action-text">
+            <span class="action-label">Tài khoản</span>
+            <span class="action-value">Đăng nhập</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       2. NAVBAR / MEGA-MENU BAR (GIỮ NGUYÊN 100% CẤU TRÚC GỐC, TRỎ SANG SAN-PHAM.HTML)
+       ======================================================================== -->
+  <nav id="main-navbar" aria-label="Điều hướng chính">
+    <div class="container navbar-container">
+      <ul class="nav-links-list">
+        
+        <!-- PC Gaming -->
+        <li class="nav-item">
+          <a href="san-pham.html" class="nav-link" onclick="localStorage.setItem('danhMucChonTuNgoai', 'pc-gaming')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2"></rect>
+              <line x1="8" y1="21" x2="16" y2="21"></line>
+              <line x1="12" y1="17" x2="12" y2="21"></line>
+            </svg>
+            <span>PC Gaming</span>
+          </a>
+        </li>
+
+        <!-- PC Văn Phòng -->
+        <li class="nav-item">
+          <a href="san-pham.html" class="nav-link" onclick="localStorage.setItem('danhMucChonTuNgoai', 'pc-office')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2"></rect>
+              <path d="M8 21h8"></path>
+              <path d="M12 17v4"></path>
+            </svg>
+            <span>PC Văn Phòng</span>
+          </a>
+        </li>
+
+        <!-- Linh Kiện PC -->
+        <li class="nav-item">
+          <a href="san-pham.html" class="nav-link" onclick="localStorage.setItem('danhMucChonTuNgoai', 'hardware')">
+            <span>Linh Kiện Máy Tính</span>
+          </a>
+        </li>
+
+        <!-- Màn Hình Máy Tính -->
+        <li class="nav-item">
+          <a href="san-pham.html" class="nav-link" onclick="localStorage.setItem('danhMucChonTuNgoai', 'monitors')">
+            <span>Màn Hình Gaming</span>
+          </a>
+        </li>
+
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ========================================================================
+       3. BODY (<main>): CHI TIẾT SẢN PHẨM (ĐÃ LÀM GỌN GÀNG, KHÔNG DƯ THỪA)
+       ======================================================================== -->
+  <main class="product-detail-page">
+    <div class="container">
+
+      <!-- Breadcrumbs điều hướng -->
+      <nav class="breadcrumb-nav" aria-label="breadcrumb">
+        <ol class="breadcrumb-list">
+          <li><a href="index.html">Trang chủ</a></li>
+          <li><span class="separator">/</span></li>
+          <li><a href="san-pham.html" id="breadcrumb-category">Sản phẩm</a></li>
+          <li><span class="separator">/</span></li>
+          <li class="active" id="breadcrumb-product-name">Đang tải...</li>
+        </ol>
+      </nav>
+
+      <!-- Khối card duy nhất bao bọc toàn bộ nội dung -->
+      <div class="product-single-card">
+        
+        <!-- Hàng 1: Grid 2 Cột (Ảnh bên trái + Đặt hàng bên phải) -->
+        <div class="product-top-grid">
+
+          <!-- CỘT TRÁI: ẢNH VÀ CAM KẾT -->
+          <div class="product-gallery-col">
+            <div class="main-image-wrapper">
+              <img id="detail-main-img" src="" alt="Hình ảnh sản phẩm" class="main-product-img">
+            </div>
+
+            <div class="product-commitments">
+              <div class="commit-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+                <span>Bảo hành chính hãng <strong>36 tháng</strong></span>
+              </div>
+              <div class="commit-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Cam kết <strong>100% linh kiện mới</strong></span>
+              </div>
+              <div class="commit-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="1" y="3" width="15" height="13"></rect>
+                  <polygon points="16 8 20 8 23 11 23 16 16 16 8"></polygon>
+                  <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                  <circle cx="18.5" cy="18.5" r="2.5"></circle>
+                </svg>
+                <span>Giao hàng và lắp đặt <strong>miễn phí</strong></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- CỘT PHẢI: THÔNG TIN CHI TIẾT & ĐẶT HÀNG -->
+          <div class="product-info-col">
+            <h1 class="product-title" id="detail-product-name">Tên sản phẩm</h1>
+
+            <div class="product-meta-row">
+              <span>Mã SP: <strong id="detail-product-sku">PC-01</strong></span>
+              <span>|</span>
+              <span>Tình trạng: <span id="detail-stock-status" class="status-badge instock">Còn hàng</span></span>
+            </div>
+
+            <!-- Khung giá -->
+            <div class="product-price-box">
+              <div class="price-main">
+                <span class="current-price" id="detail-current-price">0₫</span>
+                <span class="original-price" id="detail-original-price"></span>
+              </div>
+              <div class="installment-tag">Hỗ trợ trả góp 0% qua thẻ tín dụng</div>
+            </div>
+
+            <!-- Bảng thông số kỹ thuật (JS tự động đổi theo PC / Màn hình / Linh kiện) -->
+            <div class="specs-summary-box" id="specsContainer"></div>
+
+            <!-- Hộp quà khuyến mãi (JS render động, không hardcode) -->
+            <div class="promotions-box">
+              <div class="promotions-header">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20 12 20 22 4 22 4 12"></polyline>
+                  <rect x="2" y="7" width="20" height="5"></rect>
+                  <line x1="12" y1="22" x2="12" y2="7"></line>
+                  <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path>
+                  <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path>
+                </svg>
+                <span>Quà tặng &amp; Ưu đãi đặc quyền</span>
+              </div>
+              <ul class="promotions-list" id="promotionsList"></ul>
+            </div>
+
+            <!-- Cụm chọn số lượng & nút mua -->
+            <div class="purchase-actions-area">
+              <div class="quantity-selector">
+                <button type="button" class="btn-qty" id="btn-qty-minus">-</button>
+                <input type="number" id="product-quantity-input" value="1" min="1" max="99" readonly>
+                <button type="button" class="btn-qty" id="btn-qty-plus">+</button>
+              </div>
+
+              <div class="cta-buttons-group">
+                <button type="button" class="btn-cta btn-buy-now" id="btn-buy-now">
+                  <strong>MUA NGAY VỚI GIÁ NÀY</strong>
+                  <small>Giao hàng tận nơi hoặc nhận tại cửa hàng</small>
+                </button>
+
+                <button type="button" class="btn-cta btn-add-cart" id="btn-add-cart">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                  </svg>
+                  <span>Thêm vào giỏ</span>
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Hàng 2: Đặc điểm nổi bật (Gộp liền mạch, không còn thẻ divider dư thừa) -->
+        <div class="product-description-integrated">
+          <h2 class="section-title">Đặc điểm nổi bật &amp; Đánh giá cấu hình</h2>
+          <div class="description-content-box" id="detail-description-content"></div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ========================================================================
+       4. CLEAN MULTI-COLUMN FOOTER (GIỮ NGUYÊN 100% BẢN GỐC CỦA NHÓM)
+       ======================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-main-grid">
+        
+        <!-- Cột 1: Thông tin thương hiệu Bộ PC (Mock Data) -->
+        <div class="footer-col footer-col-brand">
+          <div class="footer-brand-title">
+            <span class="brand-text">BỘ PC</span>
+            <span class="brand-sub">Gaming &amp; Workstation</span>
+          </div>
+          <p class="footer-brand-desc">
+            Hệ thống chuyên cung cấp giải pháp máy tính để bàn, PC Gaming &amp; Workstation đồ họa tối ưu hiệu năng và độ ổn định cao.
+          </p>
+          <div class="footer-contact-info">
+            <p><strong>Hotline:</strong> <span class="hotline-val">1900 8888</span> (08:30 - 21:00)</p>
+            <p><strong>Email:</strong> support@bopc.vn</p>
+            <p><strong>Địa chỉ:</strong> Tòa nhà Bộ PC, Số 88 Phố Công Nghệ, Quận 1, TP. Hồ Chí Minh</p>
+          </div>
+        </div>
+
+        <!-- Cột 2: Sản phẩm & Danh mục -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Sản Phẩm &amp; Danh Mục</h4>
+          <ul class="footer-link-list">
+            <li><a href="san-pham.html">Bộ PC Gaming Intel &amp; AMD</a></li>
+            <li><a href="san-pham.html">Linh Kiện Máy Tính Cao Cấp</a></li>
+            <li><a href="san-pham.html">Màn Hình Đồ Họa &amp; Gaming</a></li>
+            <li><a href="san-pham.html">Tư Vấn Cấu Hình Theo Yêu Cầu</a></li>
+            <li><a href="tin-tuc.html">Tin Tức &amp; Đánh Giá Công Nghệ</a></li>
+          </ul>
+        </div>
+
+        <!-- Cột 3: Chính sách khách hàng -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Chính Sách Khách Hàng</h4>
+          <ul class="footer-link-list">
+            <li><a href="#warranty">Chính Sách Bảo Hành 36 Tháng</a></li>
+            <li><a href="#returns">Chính Sách Đổi Mới 1 Đổi 1</a></li>
+            <li><a href="#shipping">Chính Sách Giao Hàng Hỏa Tốc</a></li>
+            <li><a href="#installment">Hỗ Trợ Mua Trả Góp 0%</a></li>
+            <li><a href="#privacy">Chính Sách Bảo Mật Thông Tin</a></li>
+          </ul>
+        </div>
+
+        <!-- Cột 4: Kết nối & Thanh toán -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Kết Nối &amp; Thanh Toán</h4>
+          
+          <div class="social-icons-group">
+            <a href="#facebook" class="social-badge" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+              </svg>
+            </a>
+            <a href="#youtube" class="social-badge" aria-label="YouTube">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0-.46-5.33z"></path>
+                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="#111827"></polygon>
+              </svg>
+            </a>
+            <a href="#tiktok" class="social-badge" aria-label="TikTok">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path>
+              </svg>
+            </a>
+            <a href="#zalo" class="social-badge" aria-label="Zalo OA">
+              <span style="font-size: 12px; font-weight: 800;">Zalo</span>
+            </a>
+          </div>
+
+          <h5 class="footer-sub-title">Hình Thức Thanh Toán</h5>
+          <div class="badge-grid">
+            <span class="partner-chip">VISA</span>
+            <span class="partner-chip">MasterCard</span>
+            <span class="partner-chip">VNPAY</span>
+            <span class="partner-chip">MoMo</span>
+            <span class="partner-chip">VietQR</span>
+          </div>
+
+          <div class="cert-seals">
+            <div class="seal-ssl">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+              </svg>
+              <span>Bảo Mật SSL 256-bit</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Legal & Copyright Bar -->
+      <div class="footer-bottom-bar">
+        <div class="footer-bottom-inner">
+          <p class="copyright-text">
+            <strong>&copy; 2026 BỘ PC.</strong> Bản quyền thuộc về Dự án Bộ PC - Hệ thống bán lẻ máy tính &amp; linh kiện.
+          </p>
+          <p class="mock-data-note">
+            Thông tin doanh nghiệp mô phỏng (Mock Data) • Phục vụ mục đích học tập &amp; phát triển
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script gốc của nhóm xử lý hiệu ứng Navbar & Modal -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const navLinks = document.querySelectorAll('#main-navbar .nav-link');
+      navLinks.forEach(function (link) {
+        link.addEventListener('click', function (e) {
+          navLinks.forEach(function (item) {
+            item.classList.remove('active');
+          });
+          this.classList.add('active');
+        });
+      });
+    });
+  </script>
+
+  <script src="js/auth-modal.js"></script>
+
+  <!-- ========================================================================
+       5. JAVASCRIPT: ĐỌC DỮ LIỆU TỪ LOCALSTORAGE & CẬP NHẬT GIỎ HÀNG CHUẨN
+       ======================================================================== -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // 1. Dữ liệu mẫu dự phòng nếu mở trực tiếp trang
+      var spMacDinh = {
+        id: 1,
+        ten: "Bộ PC Gaming ASUS TUF Core i5-13400F / RAM 16GB / RTX 4060 8GB",
+        hang: "ASUS",
+        danhMuc: "pc-gaming",
+        ts1: "i5-13400F",
+        ts2: "RTX 4060",
+        ts3: "RAM 16GB",
+        giaCu: 23990000,
+        giaMoi: 19990000,
+        qua: "Tặng bàn phím cơ + Chuột Gaming",
+        anh: "img/pc-gaming-1.jpg"
+      };
+
+      // 2. Đọc từ LocalStorage do san-pham.js truyền sang
+      var spRaw = localStorage.getItem("spDangXem");
+      var sp = spRaw ? JSON.parse(spRaw) : spMacDinh;
+
+      // Cập nhật title trình duyệt theo yêu cầu bài học
+      document.title = sp.ten + " - Hệ Thống Bộ PC";
+
+      // Đổ tên danh mục và sản phẩm
+      var tenDm = "PC Gaming";
+      if (sp.danhMuc === "pc-office") tenDm = "PC Văn Phòng";
+      else if (sp.danhMuc === "hardware") tenDm = "Linh Kiện Máy Tính";
+      else if (sp.danhMuc === "monitors") tenDm = "Màn Hình Gaming";
+
+      document.getElementById("breadcrumb-category").innerText = tenDm;
+      document.getElementById("breadcrumb-product-name").innerText = sp.ten;
+      document.getElementById("detail-product-name").innerText = sp.ten;
+      document.getElementById("detail-product-sku").innerText = "PC-" + (sp.hang ? sp.hang.toUpperCase() : "GEAR") + "-0" + sp.id;
+      document.getElementById("detail-current-price").innerText = sp.giaMoi.toLocaleString("vi-VN") + "₫";
+
+      if (sp.giaCu) {
+        document.getElementById("detail-original-price").innerText = sp.giaCu.toLocaleString("vi-VN") + "₫";
+      }
+
+      var imgEl = document.getElementById("detail-main-img");
+      if (imgEl) {
+        imgEl.src = sp.anh || "img/pc-gaming-1.jpg";
+        imgEl.alt = sp.ten;
+      }
+
+      // 3. Tự động thay đổi bảng thông số kỹ thuật theo từng loại sản phẩm
+      var specsBox = document.getElementById("specsContainer");
+      if (specsBox) {
+        if (sp.danhMuc === "monitors") {
+          specsBox.innerHTML = `
+            <h3 class="specs-title">THÔNG SỐ KỸ THUẬT MÀN HÌNH:</h3>
+            <table class="specs-table">
+              <tbody>
+                <tr><th>Hãng sản xuất</th><td>${sp.hang}</td></tr>
+                <tr><th>Kích thước màn hình</th><td>${sp.ts1}</td></tr>
+                <tr><th>Tần số quét</th><td>${sp.ts2}</td></tr>
+                <tr><th>Công nghệ tấm nền</th><td>${sp.ts3}</td></tr>
+                <tr><th>Độ phân giải</th><td>Chuẩn Full HD / 2K sắc nét</td></tr>
+                <tr><th>Chế độ bảo hành</th><td>36 Tháng chính hãng</td></tr>
+              </tbody>
+            </table>
+          `;
+        } else if (sp.danhMuc === "hardware") {
+          specsBox.innerHTML = `
+            <h3 class="specs-title">THÔNG SỐ KỸ THUẬT LINH KIỆN:</h3>
+            <table class="specs-table">
+              <tbody>
+                <tr><th>Thương hiệu</th><td>${sp.hang}</td></tr>
+                <tr><th>Thông số chính</th><td>${sp.ts1}</td></tr>
+                <tr><th>Tản nhiệt / Bus</th><td>${sp.ts2}</td></tr>
+                <tr><th>Công nghệ nổi bật</th><td>${sp.ts3}</td></tr>
+                <tr><th>Thời hạn bảo hành</th><td>36 Tháng 1 đổi 1</td></tr>
+              </tbody>
+            </table>
+          `;
+        } else {
+          specsBox.innerHTML = `
+            <h3 class="specs-title">CẤU HÌNH CHI TIẾT BỘ MÁY:</h3>
+            <table class="specs-table">
+              <tbody>
+                <tr><th>Bộ vi xử lý (CPU)</th><td>${sp.ts1}</td></tr>
+                <tr><th>Card đồ họa (VGA)</th><td>${sp.ts2}</td></tr>
+                <tr><th>Bộ nhớ RAM</th><td>${sp.ts3}</td></tr>
+                <tr><th>Bo mạch chủ</th><td>Bo mạch chủ tương thích ${sp.hang}</td></tr>
+                <tr><th>Ổ cứng SSD</th><td>512GB M.2 NVMe tốc độ cao</td></tr>
+                <tr><th>Nguồn máy tính (PSU)</th><td>Công suất thực 80 Plus</td></tr>
+              </tbody>
+            </table>
+          `;
+        }
+      }
+
+      // 4. Đổ quà tặng khuyến mãi động
+      var promoBox = document.getElementById("promotionsList");
+      if (promoBox) {
+        promoBox.innerHTML = `
+          <li><strong>Khuyến mãi đặc quyền:</strong> ${sp.qua || "Tặng phụ kiện chính hãng cao cấp"}</li>
+          <li>Giảm thêm 200.000đ khi mua kèm màn hình máy tính từ 24 inch.</li>
+          <li>Miễn phí cài đặt hệ điều hành, phần mềm văn phòng và vệ sinh trọn đời máy.</li>
+        `;
+      }
+
+      // 5. Đổ bài đánh giá động theo sản phẩm
+      var descBox = document.getElementById("detail-description-content");
+      if (descBox) {
+        if (sp.danhMuc === "monitors") {
+          descBox.innerHTML = `
+            <p>Màn hình <strong>${sp.ten}</strong> mang đến trải nghiệm thị giác ấn tượng với các thông số cao cấp: <em>${sp.ts1}, tần số quét ${sp.ts2}, tấm nền ${sp.ts3}</em>, cho hình ảnh chuyển động cực kỳ mượt mà và chuẩn màu khi chơi game hay làm đồ họa.</p>
+            <p>Tích hợp công nghệ bảo vệ mắt chống lóa và đầy đủ các cổng kết nối hiện đại nhất, hỗ trợ tốt cho cả máy tính bàn và laptop.</p>
+          `;
+        } else if (sp.danhMuc === "hardware") {
+          descBox.innerHTML = `
+            <p>Linh kiện <strong>${sp.ten}</strong> chính hãng từ thương hiệu <strong>${sp.hang}</strong>. Được trang bị các thông số kỹ thuật tối tân: <em>${sp.ts1}, ${sp.ts2}, ${sp.ts3}</em>, mang lại sự bền bỉ, ổn định và hiệu năng bứt phá khi nâng cấp dàn máy.</p>
+            <p>Sản phẩm đi kèm gói bảo hành 1 đổi 1 trong vòng 36 tháng và hỗ trợ kỹ thuật tận nơi.</p>
+          `;
+        } else {
+          descBox.innerHTML = `
+            <p>Bộ máy tính <strong>${sp.ten}</strong> được tối ưu phần cứng từ các linh kiện chất lượng cao của <strong>${sp.hang}</strong>. Sức mạnh đến từ <em>${sp.ts1}</em> kết hợp cùng <em>${sp.ts2}</em> và <em>${sp.ts3}</em> giúp đáp ứng mượt mà nhu cầu công việc văn phòng, thiết kế đồ họa cũng như chiến mượt các tựa game Esport thịnh hành hiện nay.</p>
+            <p>Hệ thống tản nhiệt được bố trí thông minh, duy trì nhiệt độ tối ưu khi chạy tải nặng liên tục trong thời gian dài.</p>
+          `;
+        }
+      }
+
+      // 6. Tăng giảm số lượng mua
+      var qtyInput = document.getElementById("product-quantity-input");
+      document.getElementById("btn-qty-minus").onclick = function () {
+        var val = parseInt(qtyInput.value) || 1;
+        if (val > 1) qtyInput.value = val - 1;
+      };
+      document.getElementById("btn-qty-plus").onclick = function () {
+        var val = parseInt(qtyInput.value) || 1;
+        if (val < 99) qtyInput.value = val + 1;
+      };
+
+      // 7. Hàm cập nhật badge số lượng giỏ hàng trên Header (Đồng bộ với san-pham.js)
+      function capNhatBadgeGio() {
+        var gio = JSON.parse(localStorage.getItem("gioHangBoPC")) || [];
+        var tong = 0;
+        for (var i = 0; i < gio.length; i++) {
+          tong += gio[i].soLuong;
+        }
+        var badge = document.querySelector(".cart-badge");
+        var chuGio = document.querySelector(".action-cart .action-value");
+        if (badge) badge.innerText = tong;
+        if (chuGio) chuGio.innerText = "(" + tong + ") sản phẩm";
+      }
+
+      // 8. Xử lý lưu giỏ hàng vào LocalStorage
+      function luuVaoGio(chuyenHuong) {
+        var qty = parseInt(qtyInput.value) || 1;
+        var gio = JSON.parse(localStorage.getItem("gioHangBoPC")) || [];
+        var timThay = false;
+
+        for (var j = 0; j < gio.length; j++) {
+          if (gio[j].id === sp.id) {
+            gio[j].soLuong += qty;
+            timThay = true;
+            break;
+          }
+        }
+
+        if (!timThay) {
+          gio.push({
+            id: sp.id,
+            ten: sp.ten,
+            gia: sp.giaMoi,
+            anh: sp.anh,
+            soLuong: qty
+          });
+        }
+
+        localStorage.setItem("gioHangBoPC", JSON.stringify(gio));
+        capNhatBadgeGio();
+
+        if (chuyenHuong) {
+          window.location.href = "gio-hang.html";
+        } else {
+          alert("Đã thêm thành công " + qty + " sản phẩm vào giỏ hàng!");
+        }
+      }
+
+      document.getElementById("btn-add-cart").onclick = function () { luuVaoGio(false); };
+      document.getElementById("btn-buy-now").onclick = function () { luuVaoGio(true); };
+
+      // Chạy cập nhật ngay khi mở trang
+      capNhatBadgeGio();
+    });
+  </script>
+</body>
+</html>
