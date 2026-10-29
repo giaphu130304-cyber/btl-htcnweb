@@ -1,0 +1,283 @@
+/* css trang chu - dung lai mau + the san pham cua trang san-pham */
+
+.trang-chu {
+  padding: 18px 0 45px 0;
+}
+
+/* khung hero: slide to + 2 banner nho */
+.khu-hero {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.slide-lon {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  min-height: 250px;
+}
+
+.slide-item {
+  position: absolute;
+  inset: 0;
+  padding: 34px 64px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  opacity: 0;
+  transition: opacity 0.5s;
+  pointer-events: none;
+}
+
+.slide-item.hien {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.slide-do {
+  background: linear-gradient(90deg, #d70018, #ff4d4f);
+}
+
+.slide-den {
+  background: linear-gradient(90deg, #1f2937, #374151);
+}
+
+.slide-xanh {
+  background: linear-gradient(90deg, #1d4ed8, #3b82f6);
+}
+
+.slide-item h2 {
+  font-size: 30px;
+  line-height: 1.25;
+  margin: 6px 0 8px 0;
+}
+
+.slide-item p {
+  font-size: 14px;
+  opacity: 0.92;
+  margin-bottom: 16px;
+}
+
+.nut-hero {
+  background: #fff;
+  color: #d70018;
+  font-weight: bold;
+  font-size: 13.5px;
+  padding: 8px 20px;
+  border-radius: 6px;
+}
+
+.nut-hero:hover {
+  background: #facc15;
+  color: #111;
+}
+
+.nut-slide {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.85);
+  color: #333;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 3;
+}
+
+.nut-slide:hover {
+  background: #fff;
+  color: #d70018;
+}
+
+.nut-slide-trai {
+  left: 10px;
+}
+
+.nut-slide-phai {
+  right: 10px;
+}
+
+.cham-slide {
+  position: absolute;
+  bottom: 12px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  z-index: 3;
+}
+
+.cham {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+}
+
+.cham.hien {
+  background: #fff;
+  width: 20px;
+  border-radius: 8px;
+}
+
+.cot-banner-nho {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 14px;
+}
+
+.cot-banner-nho .o-banner {
+  align-items: center;
+}
+
+/* hang cam ket */
+.hang-cam-ket {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.o-cam-ket {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.icon-cam-ket {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #fef2f2;
+  color: #d70018;
+  font-weight: bold;
+  font-size: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.o-cam-ket b {
+  display: block;
+  font-size: 13.5px;
+  color: #222;
+}
+
+.o-cam-ket span {
+  font-size: 12px;
+  color: #666;
+}
+
+/* cac khoi san pham (dung lai .hop-ds-sp cua trang san pham) */
+.khoi-trang-chu {
+  margin-bottom: 16px;
+}
+
+.dau-khoi {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 12px;
+  margin-bottom: 14px;
+  border-bottom: 1px solid #eee;
+}
+
+.dau-khoi h2 {
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 0;
+  color: #222;
+}
+
+.xem-tat-ca {
+  font-size: 13px;
+  font-weight: 600;
+  color: #d70018;
+}
+
+.xem-tat-ca:hover {
+  text-decoration: underline;
+}
+
+/* luoi danh muc */
+.luoi-danh-muc {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.the-danh-muc {
+  border: 1px solid #ececec;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+  text-align: center;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.the-danh-muc:hover {
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+  border-color: #d70018;
+}
+
+.the-danh-muc img {
+  width: 100%;
+  height: 130px;
+  object-fit: cover;
+}
+
+.the-danh-muc span {
+  display: block;
+  padding: 10px 6px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #222;
+}
+
+.the-danh-muc:hover span {
+  color: #d70018;
+}
+
+/* man hinh nho */
+@media (max-width: 992px) {
+  .khu-hero {
+    grid-template-columns: 1fr;
+  }
+  .cot-banner-nho {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+  }
+  .hang-cam-ket {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .cot-banner-nho {
+    grid-template-columns: 1fr;
+  }
+  .luoi-danh-muc {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .slide-item {
+    padding: 24px 28px;
+  }
+  .slide-item h2 {
+    font-size: 22px;
+  }
+}

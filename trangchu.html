@@ -1,100 +1,381 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trang chu</title>
-    <!-- Bootstrap CSS (assumes CDN already used in other pages) -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trang Chủ - BỘ PC Gaming &amp; Linh Kiện Máy Tính</title>
+  <meta name="description" content="Bộ PC - Chuyên cung cấp PC Gaming, PC Văn Phòng, Màn hình và Linh kiện máy tính chính hãng 100%.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/san-pham.css">
+  <link rel="stylesheet" href="css/trang-chu.css">
 </head>
 <body>
-    <!-- Header -->
-    <header id="top-header" class="bg-light py-2">
-        <div class="container d-flex justify-content-between align-items-center">
-            <div class="logo"><a href="trangchu.html" class="text-decoration-none">MyShop</a></div>
-            <div class="auth-links">
-                <a href="#" class="me-3" id="loginBtn">Dang nhap</a>
-                <a href="#" id="signupBtn">Dang ky</a>
+
+  <!-- Header dung chung cua nhom -->
+  <header id="top-header">
+    <div class="container header-wrapper">
+
+      <a href="trangchu.html" class="brand-logo" aria-label="Bộ PC Trang Chủ">
+        <div class="logo-icon-wrapper">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="4" y="2" width="16" height="20" rx="2"></rect>
+            <circle cx="12" cy="14" r="3"></circle>
+            <line x1="12" y1="6" x2="12.01" y2="6"></line>
+            <line x1="9" y1="18" x2="15" y2="18"></line>
+          </svg>
+        </div>
+        <span class="logo-brand-name">Bộ PC</span>
+      </a>
+
+      <div class="header-search">
+        <form class="search-form" action="san-pham.html" method="get" role="search">
+          <input
+            type="search"
+            class="search-input"
+            placeholder="Bạn cần tìm gì hôm nay? (PC Gaming, RTX 4070, Core i7...)"
+            aria-label="Tìm kiếm sản phẩm"
+          >
+          <button type="submit" class="search-submit-btn" aria-label="Tìm kiếm">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </button>
+        </form>
+      </div>
+
+      <div class="header-actions">
+
+        <a href="#tracking" class="action-item" title="Tra cứu tiến độ giao hàng">
+          <div class="action-icon-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="1" y="3" width="15" height="13"></rect>
+              <polygon points="16 8 20 8 23 11 23 16 16 16 8"></polygon>
+              <circle cx="5.5" cy="18.5" r="2.5"></circle>
+              <circle cx="18.5" cy="18.5" r="2.5"></circle>
+            </svg>
+          </div>
+          <div class="action-text">
+            <span class="action-label">Tra cứu</span>
+            <span class="action-value">Đơn hàng</span>
+          </div>
+        </a>
+
+        <a href="#cart" class="action-item action-cart" title="Giỏ hàng của bạn">
+          <div class="action-icon-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <path d="M16 10a4 4 0 0 1-8 0"></path>
+            </svg>
+            <span class="cart-badge">0</span>
+          </div>
+          <div class="action-text">
+            <span class="action-label">Giỏ hàng</span>
+            <span class="action-value">(0) sản phẩm</span>
+          </div>
+        </a>
+
+        <a href="#account" class="action-item" title="Đăng nhập hoặc đăng ký tài khoản" data-auth-modal="login">
+          <div class="action-icon-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+          </div>
+          <div class="action-text">
+            <span class="action-label">Tài khoản</span>
+            <span class="action-value">Đăng nhập</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Navbar dung chung cua nhom -->
+  <nav id="main-navbar" aria-label="Điều hướng chính">
+    <div class="container navbar-container">
+      <ul class="nav-links-list">
+
+        <li class="nav-item">
+          <a href="san-pham.html" class="nav-link" onclick="localStorage.setItem('danhMucChonTuNgoai', 'pc-gaming')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2"></rect>
+              <line x1="8" y1="21" x2="16" y2="21"></line>
+              <line x1="12" y1="17" x2="12" y2="21"></line>
+            </svg>
+            <span>PC Gaming</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a href="san-pham.html" class="nav-link" onclick="localStorage.setItem('danhMucChonTuNgoai', 'pc-office')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2"></rect>
+              <path d="M8 21h8"></path>
+              <path d="M12 17v4"></path>
+            </svg>
+            <span>PC Văn Phòng</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a href="san-pham.html" class="nav-link" onclick="localStorage.setItem('danhMucChonTuNgoai', 'hardware')">
+            <span>Linh Kiện Máy Tính</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a href="san-pham.html" class="nav-link" onclick="localStorage.setItem('danhMucChonTuNgoai', 'monitors')">
+            <span>Màn Hình Gaming</span>
+          </a>
+        </li>
+
+      </ul>
+    </div>
+  </nav>
+
+  <!-- phan main trang chu -->
+  <main class="trang-chu">
+    <div class="container">
+
+      <!-- banner dau trang: slide to + 2 banner nho -->
+      <section class="khu-hero">
+        <div class="slide-lon" id="slideLon">
+          <div class="slide-item slide-do hien">
+            <span class="tag-banner">SIÊU SALE THÁNG NÀY</span>
+            <h2>Build PC Gaming<br>Giảm Đến 5 Triệu</h2>
+            <p>Tặng trọn bộ Phím Cơ + Chuột Gaming chính hãng</p>
+            <a href="san-pham.html" class="nut-hero">Mua ngay</a>
+          </div>
+          <div class="slide-item slide-den">
+            <span class="tag-banner">ƯU ĐÃI SINH VIÊN</span>
+            <h2>Hỗ Trợ Trả Góp<br>0% Lãi Suất</h2>
+            <p>Bảo hành 1 đổi 1 - Giao lắp tận nơi miễn phí</p>
+            <a href="san-pham.html" class="nut-hero">Xem sản phẩm</a>
+          </div>
+          <div class="slide-item slide-xanh">
+            <span class="tag-banner">MÀN HÌNH GAMING</span>
+            <h2>Màn Hình 180Hz<br>Chỉ Từ 3.39 Triệu</h2>
+            <p>Tặng cáp DisplayPort + giao hàng nội thành miễn phí</p>
+            <a href="san-pham.html" class="nut-hero">Xem ngay</a>
+          </div>
+
+          <button type="button" class="nut-slide nut-slide-trai" onclick="doiSlide(-1)" aria-label="Slide trước">&lsaquo;</button>
+          <button type="button" class="nut-slide nut-slide-phai" onclick="doiSlide(1)" aria-label="Slide sau">&rsaquo;</button>
+          <div class="cham-slide" id="chamSlide"></div>
+        </div>
+
+        <div class="cot-banner-nho">
+          <div class="o-banner banner-do">
+            <div>
+              <span class="tag-banner">HOT DEAL</span>
+              <h3>VGA RTX 4060 Chỉ 8.19 Triệu</h3>
+              <p>Giảm thêm 200.000đ khi build kèm PC</p>
             </div>
-        </div>
-    </header>
-
-    <!-- Navbar -->
-    <nav id="main-navbar" class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div class="container">
-            <a class="navbar-brand" href="trangchu.html">Trang chu</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="san-pham.html">San pham</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Lien he</a></li>
-                </ul>
+          </div>
+          <div class="o-banner banner-den">
+            <div>
+              <span class="tag-banner">CAO CẤP</span>
+              <h3>PC Workstation Đồ Họa</h3>
+              <p>Tặng tản nhiệt nước AIO 360 RGB</p>
             </div>
+          </div>
         </div>
-    </nav>
+      </section>
 
-    <!-- Hero/banner -->
-    <section class="hero bg-secondary text-white py-5 text-center">
-        <div class="container">
-            <h1 class="display-4">Chao mung den MyShop</h1>
-            <p class="lead">Mua sam thong minh, nhanh gọn</p>
-            <a href="san-pham.html" class="btn btn-light btn-lg">Xem san pham</a>
+      <!-- cam ket cua hang -->
+      <section class="hang-cam-ket">
+        <div class="o-cam-ket">
+          <div class="icon-cam-ket">✔</div>
+          <div><b>Chính hãng 100%</b><span>Bảo hành 36 tháng</span></div>
         </div>
-    </section>
+        <div class="o-cam-ket">
+          <div class="icon-cam-ket">⚡</div>
+          <div><b>Giao hàng hỏa tốc</b><span>Nội thành trong 2 giờ</span></div>
+        </div>
+        <div class="o-cam-ket">
+          <div class="icon-cam-ket">%</div>
+          <div><b>Trả góp 0%</b><span>Duyệt nhanh trong 15 phút</span></div>
+        </div>
+        <div class="o-cam-ket">
+          <div class="icon-cam-ket">⟲</div>
+          <div><b>1 đổi 1 trong 30 ngày</b><span>Lỗi do nhà sản xuất</span></div>
+        </div>
+      </section>
 
-    <!-- Placeholder featured products -->
-    <section class="featured py-5">
-        <div class="container">
-            <h2 class="mb-4">San pham noi bat</h2>
-            <div class="row">
-                <!-- simple card placeholders -->
-                <div class="col-md-4 mb-3">
-                    <div class="card h-16">
-                        <img src="img/placeholder.png" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">San pham 1</h5>
-                            <p class="card-text">Mo ta ngan gon.</p>
-                            <a href="#" class="btn btn-primary">Mua ngay</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-3">
-                    <div class="card h-16">
-                        <img src="img/placeholder.png" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">San pham 2</h5>
-                            <p class="card-text">Mo ta ngan gon.</p>
-                            <a href="#" class="btn btn-primary">Mua ngay</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-3">
-                    <div class="card h-16">
-                        <img src="img/placeholder.png" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">San pham 3</h5>
-                            <p class="card-text">Mo ta ngan gon.</p>
-                            <a href="#" class="btn btn-primary">Mua ngay</a>
-                        </div>
-                    </div>
-                </div>
+      <!-- danh muc noi bat -->
+      <section class="hop-ds-sp khoi-trang-chu">
+        <div class="dau-khoi">
+          <h2>Danh mục nổi bật</h2>
+        </div>
+        <div class="luoi-danh-muc">
+          <a href="san-pham.html" class="the-danh-muc" onclick="localStorage.setItem('danhMucChonTuNgoai', 'pc-gaming')">
+            <img src="img/pc-gaming-1.jpg" alt="PC Gaming">
+            <span>PC Gaming</span>
+          </a>
+          <a href="san-pham.html" class="the-danh-muc" onclick="localStorage.setItem('danhMucChonTuNgoai', 'pc-office')">
+            <img src="img/pc-office-1.jpg" alt="PC Văn Phòng">
+            <span>PC Văn Phòng</span>
+          </a>
+          <a href="san-pham.html" class="the-danh-muc" onclick="localStorage.setItem('danhMucChonTuNgoai', 'hardware')">
+            <img src="img/vga-rtx.jpg" alt="Linh kiện máy tính">
+            <span>Linh Kiện Máy Tính</span>
+          </a>
+          <a href="san-pham.html" class="the-danh-muc" onclick="localStorage.setItem('danhMucChonTuNgoai', 'monitors')">
+            <img src="img/monitor-1.jpg" alt="Màn hình gaming">
+            <span>Màn Hình Gaming</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- cac khoi san pham do tu js -->
+      <section class="hop-ds-sp khoi-trang-chu">
+        <div class="dau-khoi">
+          <h2>🔥 PC Gaming bán chạy</h2>
+          <a href="san-pham.html" class="xem-tat-ca" onclick="localStorage.setItem('danhMucChonTuNgoai', 'pc-gaming')">Xem tất cả &rsaquo;</a>
+        </div>
+        <div id="khungPcGaming" class="luoi-san-pham"></div>
+      </section>
+
+      <section class="hop-ds-sp khoi-trang-chu">
+        <div class="dau-khoi">
+          <h2>PC Văn Phòng &amp; Màn Hình</h2>
+          <a href="san-pham.html" class="xem-tat-ca">Xem tất cả &rsaquo;</a>
+        </div>
+        <div id="khungVanPhong" class="luoi-san-pham"></div>
+      </section>
+
+      <section class="hop-ds-sp khoi-trang-chu">
+        <div class="dau-khoi">
+          <h2>Linh kiện máy tính</h2>
+          <a href="san-pham.html" class="xem-tat-ca" onclick="localStorage.setItem('danhMucChonTuNgoai', 'hardware')">Xem tất cả &rsaquo;</a>
+        </div>
+        <div id="khungLinhKien" class="luoi-san-pham"></div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Footer dung chung cua nhom -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-main-grid">
+
+        <div class="footer-col footer-col-brand">
+          <div class="footer-brand-title">
+            <span class="brand-text">BỘ PC</span>
+            <span class="brand-sub">Gaming &amp; Workstation</span>
+          </div>
+          <p class="footer-brand-desc">
+            Hệ thống chuyên cung cấp giải pháp máy tính để bàn, PC Gaming &amp; Workstation đồ họa tối ưu hiệu năng và độ ổn định cao.
+          </p>
+          <div class="footer-contact-info">
+            <p><strong>Hotline:</strong> <span class="hotline-val">1900 8888</span> (08:30 - 21:00)</p>
+            <p><strong>Email:</strong> support@bopc.vn</p>
+            <p><strong>Địa chỉ:</strong> Tòa nhà Bộ PC, Số 88 Phố Công Nghệ, Quận 1, TP. Hồ Chí Minh</p>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title">Sản Phẩm &amp; Danh Mục</h4>
+          <ul class="footer-link-list">
+            <li><a href="#pc-gaming">Bộ PC Gaming Intel &amp; AMD</a></li>
+            <li><a href="#hardware">Linh Kiện Máy Tính Cao Cấp</a></li>
+            <li><a href="#monitors">Màn Hình Đồ Họa &amp; Gaming</a></li>
+            <li><a href="#custom-pc">Tư Vấn Cấu Hình Theo Yêu Cầu</a></li>
+            <li><a href="#news">Tin Tức &amp; Đánh Giá Công Nghệ</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title">Chính Sách Khách Hàng</h4>
+          <ul class="footer-link-list">
+            <li><a href="#warranty">Chính Sách Bảo Hành 36 Tháng</a></li>
+            <li><a href="#returns">Chính Sách Đổi Mới 1 Đổi 1</a></li>
+            <li><a href="#shipping">Chính Sách Giao Hàng Hỏa Tốc</a></li>
+            <li><a href="#installment">Hỗ Trợ Mua Trả Góp 0%</a></li>
+            <li><a href="#privacy">Chính Sách Bảo Mật Thông Tin</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title">Kết Nối &amp; Thanh Toán</h4>
+
+          <div class="social-icons-group">
+            <a href="#facebook" class="social-badge" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+              </svg>
+            </a>
+            <a href="#youtube" class="social-badge" aria-label="YouTube">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0-.46-5.33z"></path>
+                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="#111827"></polygon>
+              </svg>
+            </a>
+            <a href="#tiktok" class="social-badge" aria-label="TikTok">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path>
+              </svg>
+            </a>
+            <a href="#zalo" class="social-badge" aria-label="Zalo OA">
+              <span style="font-size: 12px; font-weight: 800;">Zalo</span>
+            </a>
+          </div>
+
+          <h5 class="footer-sub-title">Hình Thức Thanh Toán</h5>
+          <div class="badge-grid">
+            <span class="partner-chip">VISA</span>
+            <span class="partner-chip">MasterCard</span>
+            <span class="partner-chip">VNPAY</span>
+            <span class="partner-chip">MoMo</span>
+            <span class="partner-chip">VietQR</span>
+          </div>
+
+          <div class="cert-seals">
+            <div class="seal-ssl">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+              </svg>
+              <span>Bảo Mật SSL 256-bit</span>
             </div>
+          </div>
         </div>
-    </section>
 
-    <!-- Footer (copy from index) -->
-    <footer class="site-footer bg-dark text-white py-4">
-        <div class="container text-center">
-            <p class="mb-0">&copy; 2026 MyShop. All rights reserved.</p>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <div class="footer-bottom-inner">
+          <p class="copyright-text">
+            <strong>&copy; 2026 BỘ PC.</strong> Bản quyền thuộc về Dự án Bộ PC - Hệ thống bán lẻ máy tính &amp; linh kiện.
+          </p>
+          <p class="mock-data-note">
+            Thông tin doanh nghiệp mô phỏng (Mock Data) • Phục vụ mục đích học tập &amp; phát triển
+          </p>
         </div>
-    </footer>
+      </div>
+    </div>
+  </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/auth-modal.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const navLinks = document.querySelectorAll('#main-navbar .nav-link');
+      navLinks.forEach(function (link) {
+        link.addEventListener('click', function (e) {
+          navLinks.forEach(function (item) {
+            item.classList.remove('active');
+          });
+          this.classList.add('active');
+        });
+      });
+    });
+  </script>
+
+  <script src="js/auth-modal.js"></script>
+  <script src="js/trang-chu.js"></script>
+
 </body>
 </html>
