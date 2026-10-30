@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kiểm thử phần phụ trách – PC Store</title>
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+</head>
+<body class="bg-light">
+  <main class="container py-5">
+    <h1 class="h3">Kiểm thử phần phụ trách PC Store</h1>
+    <p>Chạy các hàm thật trong dự án: Regex, tài khoản, trạng thái, liên hệ và dữ liệu PC.</p>
+    <p class="text-secondary">Dùng các key riêng bắt đầu bằng <code>pcstore_test_</code> rồi xóa sau khi chạy. Không sửa users, currentUser, contacts hoặc giỏ hàng đang sử dụng. Chạy bằng Live Server.</p>
+    <button id="run-tests" type="button" class="btn btn-dark">Chạy kiểm thử</button>
+    <a href="../html/index.html" class="btn btn-outline-dark">Về cửa hàng</a>
+    <div id="test-summary" class="my-4" aria-live="polite"></div>
+    <div class="table-responsive bg-white rounded">
+      <table class="table mb-0"><thead><tr><th>Trường hợp</th><th>Kết quả</th></tr></thead><tbody id="test-results"></tbody></table>
+    </div>
+    <p class="mt-3 text-secondary">Bộ kiểm tra này bổ sung cho kiểm thử thao tác thực tế. Xem TEST-REPORT.md để biết những luồng trình duyệt đã chạy.</p>
+  </main>
+  <!-- Input giả chỉ phục vụ gọi các hàm validation thật; không hiển thị với khách. -->
+  <div id="test-fixtures" hidden>
+    <input id="fullName"><div id="fullName-error"></div>
+    <input id="phone"><div id="phone-error"></div>
+    <input id="email"><div id="email-error"></div>
+    <input id="password"><div id="password-error"></div>
+    <input id="confirmPassword"><div id="confirmPassword-error"></div>
+    <input id="address"><div id="address-error"></div>
+    <select id="subject"><option value="">Chọn</option><option value="consult">Tư vấn</option><option value="order">Đơn hàng</option><option value="feedback">Góp ý</option></select><div id="subject-error"></div>
+    <textarea id="message"></textarea><div id="message-error"></div>
+    <div id="form-message"></div>
+  </div>
+  <script src="../js/jquery-3.7.1.min.js"></script>
+  <script src="../js/products-data.js"></script>
+  <script src="../js/common.js"></script>
+  <script src="../js/validation.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/contact.js"></script>
+  <script src="my-part-tests.js"></script>
+</body>
+</html>

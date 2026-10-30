@@ -2,227 +2,133 @@
 <html lang="vi">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta
       name="description"
-      content="Đăng ký tài khoản PC Store - Website mô phỏng bán máy tính."
+      content="PC Store – Website mô phỏng bán máy tính cho bài tập lớn Lập trình Web."
     />
     <title>Đăng ký | PC Store</title>
+    <link rel="icon" href="../img/favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="../css/bootstrap.min.css" />
-    <link rel="stylesheet" href="../css/auth-demo.css" />
-
-    <script src="../js/jquery-4.0.0.min.js" defer></script>
-    <script src="../js/bootstrap.bundle.min.js" defer></script>
-    <script src="../js/storage.js" defer></script>
-    <script src="../js/validation.js" defer></script>
-    <script src="../js/auth.js" defer></script>
+    <link rel="stylesheet" href="../css/style.css" />
   </head>
-
-  <body class="auth-page register-page">
-    <!-- HEADER -->
-    <header class="demo-header">
-      <div class="container header-inner">
-        <a class="logo" href="login.html"> PC<span>Store</span> </a>
-
-        <nav class="header-nav" aria-label="Điều hướng tài khoản">
-          <a href="login.html">Đăng nhập</a>
-          <a href="register.html" class="active" aria-current="page">
-            Đăng ký
-          </a>
-        </nav>
+  <body>
+    <div id="site-header"></div>
+    <main class="container">
+      <div class="breadcrumbs">
+        <a href="index.html">Trang chủ</a> / Đăng ký
       </div>
-    </header>
-
-    <!-- MAIN -->
-    <main class="auth-main">
-      <div class="container">
-        <section class="form-layout">
-          <!-- GIỚI THIỆU -->
-          <div class="form-art">
-            <div class="art-content">
-              <span class="eyebrow"> WELCOME TO PC STORE </span>
-
-              <h1>
-                Góc máy mới.<br />
-                <span>Cảm hứng mới.</span>
-              </h1>
-
-              <p>
-                Khám phá thế giới PC và tìm kiếm cấu hình phù hợp với nhu cầu
-                của bạn.
-              </p>
-            </div>
-
-            <div class="art-image">
-              <img src="../img/pc.svg" alt="Máy tính PC Gaming minh họa" />
-            </div>
+      <section class="form-layout">
+        <div class="form-art">
+          <span class="eyebrow">WELCOME TO PC STORE</span>
+          <h1>
+            Góc máy mới.<br />
+            <span>Cảm hứng mới.</span>
+          </h1>
+          <p>
+            Kết nối với PC Store và bắt đầu hành trình<br />tìm cấu hình dành
+            riêng cho bạn.
+          </p>
+          <img src="../img/products/gaming-0.svg" alt="PC gaming minh họa" />
+        </div>
+        <div class="form-side">
+          <section id="auth-session" aria-live="polite" hidden></section>
+          <div id="auth-form-area">
+          <h2>Bắt đầu cùng PC Store</h2>
+          <p class="muted">Tạo tài khoản để trải nghiệm website.</p>
+          <div class="demo-note">
+            Đây là website học tập. Chỉ dùng thông tin giả và mật khẩu demo; tài
+            khoản lưu trong trình duyệt, không có bảo mật thực tế.
           </div>
-
-          <!-- FORM ĐĂNG KÝ -->
-          <div class="form-side">
-            <section id="auth-session" aria-live="polite" hidden></section>
-
-            <div id="auth-form-area" class="auth-form-content">
-              <div class="form-heading">
-                <h2>Bắt đầu cùng PC Store</h2>
-                <p class="muted">Tạo tài khoản để trải nghiệm website.</p>
-              </div>
-
-              <div id="form-message" aria-live="polite"></div>
-
-              <form id="register-form" class="validated-form" novalidate>
-                <!-- HỌ VÀ TÊN -->
-                <div class="form-group">
-                  <label class="form-label" for="fullName"> Họ và tên </label>
-
-                  <input
-                    class="form-control"
-                    id="fullName"
-                    name="fullName"
-                    type="text"
-                    aria-describedby="fullName-error"
-                    autocomplete="name"
-                    maxlength="70"
-                    placeholder="Nguyễn Văn A"
-                    required
-                  />
-
-                  <div id="fullName-error" class="invalid-feedback"></div>
-                </div>
-
-                <!-- SỐ ĐIỆN THOẠI -->
-                <div class="form-group">
-                  <label class="form-label" for="phone"> Số điện thoại </label>
-
-                  <input
-                    class="form-control"
-                    id="phone"
-                    name="phone"
-                    type="tel"
-                    inputmode="numeric"
-                    aria-describedby="phone-error"
-                    autocomplete="tel"
-                    maxlength="10"
-                    placeholder="09xxxxxxxx"
-                    required
-                  />
-
-                  <div id="phone-error" class="invalid-feedback"></div>
-                </div>
-
-                <!-- EMAIL -->
-                <div class="form-group">
-                  <label class="form-label" for="email"> Email </label>
-
-                  <input
-                    class="form-control"
-                    id="email"
-                    name="email"
-                    type="email"
-                    aria-describedby="email-error"
-                    autocomplete="email"
-                    maxlength="120"
-                    placeholder="ban@example.com"
-                    required
-                  />
-
-                  <div id="email-error" class="invalid-feedback"></div>
-                </div>
-
-                <!-- MẬT KHẨU -->
-                <div class="form-group">
-                  <label class="form-label" for="password">
-                    Mật khẩu demo
-                  </label>
-
-                  <input
-                    class="form-control"
-                    id="password"
-                    name="password"
-                    type="password"
-                    aria-describedby="password-help password-error"
-                    autocomplete="new-password"
-                    maxlength="64"
-                    placeholder="Nhập mật khẩu"
-                    required
-                  />
-
-                  <div id="password-error" class="invalid-feedback"></div>
-
-                  <p id="password-help" class="muted mb-1">
-                    8–64 ký tự, có chữ hoa, chữ thường và số, không chứa khoảng
-                    trắng.
-                  </p>
-
-                  <button
-                    type="button"
-                    class="text-button"
-                    data-toggle-password="password"
-                    aria-controls="password"
-                    aria-pressed="false"
-                  >
-                    Hiện mật khẩu
-                  </button>
-                </div>
-
-                <!-- XÁC NHẬN MẬT KHẨU -->
-                <div class="form-group">
-                  <label class="form-label" for="confirmPassword">
-                    Xác nhận mật khẩu
-                  </label>
-
-                  <input
-                    class="form-control"
-                    id="confirmPassword"
-                    name="confirmPassword"
-                    type="password"
-                    aria-describedby="confirmPassword-error"
-                    autocomplete="new-password"
-                    maxlength="64"
-                    placeholder="Nhập lại mật khẩu"
-                    required
-                  />
-
-                  <div
-                    id="confirmPassword-error"
-                    class="invalid-feedback"
-                  ></div>
-
-                  <button
-                    type="button"
-                    class="text-button"
-                    data-toggle-password="confirmPassword"
-                    aria-controls="confirmPassword"
-                    aria-pressed="false"
-                  >
-                    Hiện mật khẩu
-                  </button>
-                </div>
-
-                <!-- SUBMIT -->
-                <button type="submit" class="btn btn-yellow w-100 login-submit">
-                  Tạo tài khoản →
-                </button>
-              </form>
-
-              <!-- ĐĂNG NHẬP -->
-              <p class="form-links">
-                Đã có tài khoản?
-                <a id="login-link" href="login.html"> Đăng nhập </a>
-              </p>
+          <div id="form-message" aria-live="polite"></div>
+          <form id="register-form" class="validated-form" novalidate>
+            <div class="form-group">
+              <label class="form-label" for="fullName">Họ và tên</label>
+              <input
+                class="form-control"
+                id="fullName"
+                name="fullName"
+                type="text"
+                aria-describedby="fullName-error"
+                autocomplete="name"
+                maxlength="70" required>
+              <div id="fullName-error" class="invalid-feedback"></div>
             </div>
+            <div class="form-group">
+              <label class="form-label" for="phone">Số điện thoại</label>
+              <input
+                class="form-control"
+                id="phone"
+                name="phone"
+                type="tel" inputmode="numeric"
+                aria-describedby="phone-error"
+                autocomplete="tel"
+                maxlength="10"
+                placeholder="09xxxxxxxx" required>
+              <div id="phone-error" class="invalid-feedback"></div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="email">Email</label>
+              <input
+                class="form-control"
+                id="email"
+                name="email"
+                type="email"
+                aria-describedby="email-error"
+                autocomplete="email"
+                maxlength="120"
+                placeholder="ban@example.com" required>
+              <div id="email-error" class="invalid-feedback"></div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="password">Mật khẩu demo</label>
+              <input
+                class="form-control"
+                id="password"
+                name="password"
+                type="password"
+                aria-describedby="password-help password-error"
+                autocomplete="off"
+                maxlength="64" required>
+              <div id="password-error" class="invalid-feedback"></div>
+              <p id="password-help" class="muted mb-1">8–64 ký tự, có chữ hoa, chữ thường và số, không có khoảng trắng.</p>
+              <button type="button" class="text-button" data-toggle-password="password" aria-controls="password" aria-pressed="false">Hiện mật khẩu</button>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="confirmPassword"
+                >Xác nhận mật khẩu</label
+              >
+              <input
+                class="form-control"
+                id="confirmPassword"
+                name="confirmPassword"
+                type="password"
+                aria-describedby="confirmPassword-error"
+                autocomplete="off"
+                maxlength="64" required>
+              <div id="confirmPassword-error" class="invalid-feedback"></div>
+              <button type="button" class="text-button" data-toggle-password="confirmPassword" aria-controls="confirmPassword" aria-pressed="false">Hiện mật khẩu</button>
+            </div>
+            <button type="submit" class="btn btn-yellow w-100">
+              Tạo tài khoản →
+            </button>
+          </form>
+          <p class="form-links">
+            Đã có tài khoản? <a id="login-link" href="login.html">Đăng nhập</a>
+          </p>
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
     </main>
-
-    <!-- FOOTER -->
-    <footer class="demo-footer">
-      <div class="container footer-inner">
-        <div class="footer-brand">PC<span>Store</span></div>
-        <p>© PC Store · Website demo</p>
-      </div>
-    </footer>
+    <div id="site-footer"></div>
+    <div id="notice" aria-live="polite"></div>
+    <script src="../js/jquery-3.7.1.min.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/products-data.js"></script>
+    <script src="../js/common.js"></script>
+    <script src="../js/validation.js"></script>
+    <script src="../js/auth.js"></script>
   </body>
 </html>
+
+

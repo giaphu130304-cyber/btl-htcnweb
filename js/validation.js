@@ -19,7 +19,7 @@ function validateField(id, valid, message) {
 function validateName() {
   const value = normalizeName($('#fullName').val());
   if (!value) return validateField('fullName', false, 'Vui lòng nhập họ và tên.');
-  // Chữ tiếng Việt
+  // Chữ tiếng Việt, bao gồm dấu Unicode tổ hợp.
   const pattern = /^[\p{L}\p{M}]+(?:[ '-][\p{L}\p{M}]+)*$/u;
   const valid = value.length >= 2 && value.length <= 70 && pattern.test(value);
   return validateField('fullName', valid, 'Họ tên cần 2–70 ký tự, chỉ gồm chữ, khoảng trắng, dấu nháy hoặc gạch nối giữa các từ.');
@@ -63,6 +63,21 @@ function validateConfirmPassword() {
   return validateField('confirmPassword', value === $('#password').val(), 'Mật khẩu xác nhận chưa khớp.');
 }
 
+function validateAddress() {
+  const value = $('#address').val().trim();
+  return validateField('address', value.length >= 10 && value.length <= 250, 'Nhập địa chỉ từ 10–250 ký tự, gồm số nhà, đường và địa phương.');
+}
+
+function validateSubject() {
+  return validateField('subject', ['consult', 'order', 'feedback'].includes($('#subject').val()), 'Vui lòng chọn chủ đề liên hệ.');
+}
+
+function validateMessage() {
+  const value = $('#message').val().trim();
+  if (!value) return validateField('message', false, 'Vui lòng nhập nội dung cần tư vấn.');
+  return validateField('message', value.length >= 10 && value.length <= 2000, 'Nội dung cần từ 10–2000 ký tự.');
+}
+
 function validateAll(checks) {
   // Gọi tất cả trước khi tổng hợp, tránh && dừng sớm và bỏ sót lỗi.
   const results = checks.map(check => check());
@@ -90,7 +105,10 @@ $(function () {
     phone: validatePhone,
     email: validateEmail,
     password: $('#register-form').length ? validatePassword : validateLoginPassword,
-    confirmPassword: validateConfirmPassword
+    confirmPassword: validateConfirmPassword,
+    address: validateAddress,
+    subject: validateSubject,
+    message: validateMessage
   };
   $('.validated-form').on('focusout', 'input, select, textarea', function () {
     if (checks[this.id]) checks[this.id]();

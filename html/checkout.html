@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="PC Store – Website mô phỏng bán máy tính cho bài tập lớn Lập trình Web."
+    />
+    <title>Thanh toán | PC Store</title>
+    <link rel="icon" href="../img/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <div id="site-header"></div>
+    <main class="container">
+      <div class="breadcrumbs">
+        <a href="index.html">Trang chủ</a> / Thanh toán
+      </div>
+      <h1 class="page-heading">Hoàn tất đơn hàng</h1>
+      <div id="checkout-content" class="shopping-layout">
+        <section class="panel">
+          <h2>Thông tin người nhận</h2>
+          <form id="checkout-form" class="validated-form" novalidate>
+            <div class="form-group">
+              <label class="form-label" for="fullName">Họ và tên</label>
+              <input
+                class="form-control"
+                id="fullName"
+                name="fullName"
+                type="text"
+                aria-describedby="fullName-error"
+                autocomplete="name"
+                maxlength="70"
+              />
+              <div id="fullName-error" class="invalid-feedback"></div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="phone">Số điện thoại</label>
+              <input
+                class="form-control"
+                id="phone"
+                name="phone"
+                type="tel"
+                aria-describedby="phone-error"
+                autocomplete="tel"
+                maxlength="10"
+                placeholder="09xxxxxxxx"
+              />
+              <div id="phone-error" class="invalid-feedback"></div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="address">Địa chỉ nhận hàng</label>
+              <input
+                class="form-control"
+                id="address"
+                name="address"
+                type="text"
+                aria-describedby="address-error"
+                autocomplete="street-address"
+                maxlength="250"
+              />
+              <div id="address-error" class="invalid-feedback"></div>
+            </div>
+            <h2 class="mt-4">Phương thức thanh toán</h2>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="payment"
+                value="cod"
+                id="cod"
+                checked
+              />
+              <label class="form-check-label" for="cod"
+                >Thanh toán khi nhận hàng (COD)</label
+              >
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="payment"
+                value="bank"
+                id="bank"
+              />
+              <label class="form-check-label" for="bank"
+                >Chuyển khoản mô phỏng</label
+              >
+            </div>
+            <div id="bank-info" class="demo-note">
+              Chế độ mô phỏng: không chuyển tiền thật. Đơn hàng chỉ được lưu
+              trong trình duyệt.
+            </div>
+            <button class="btn btn-yellow w-100 mt-3" type="submit">
+              Xác nhận đặt hàng →
+            </button>
+            <p class="small-note">
+              Không có giao dịch thật trên website bài tập.
+            </p>
+          </form>
+        </section>
+        <aside class="panel order-summary" id="checkout-summary"></aside>
+      </div>
+    </main>
+    <div id="site-footer"></div>
+    <div id="notice" aria-live="polite"></div>
+    <script src="../js/jquery-3.7.1.min.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/products-data.js"></script>
+    <script src="../js/common.js"></script>
+    <script src="../js/validation.js"></script>
+    <script src="../js/products.js"></script>
+    <script src="../js/cart.js"></script>
+    <script src="../js/compare.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/checkout.js"></script>
+    <script src="../js/contact.js"></script>
+  </body>
+</html>

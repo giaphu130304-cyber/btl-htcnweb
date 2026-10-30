@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="PC Store – Website mô phỏng bán máy tính cho bài tập lớn Lập trình Web."
+    />
+    <title>Khám phá tất cả PC | PC Store</title>
+    <link rel="icon" href="../img/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <div id="site-header"></div>
+    <main class="container">
+      <div class="breadcrumbs">
+        <a href="index.html">Trang chủ</a> / Khám phá tất cả PC
+      </div>
+      <h1 class="page-heading" id="listing-heading">
+        Tìm chiếc PC dành cho bạn
+      </h1>
+      <div class="panel filter-bar">
+        <div>
+          <label for="search-products">Tìm kiếm sản phẩm</label>
+          <input
+            id="search-products"
+            class="form-control"
+            placeholder="Nhập tên cấu hình…"
+          />
+        </div>
+        <div>
+          <label for="filter-category">Nhu cầu sử dụng</label>
+          <select class="form-select product-filter" id="filter-category">
+            <option value="">Tất cả PC</option>
+            <option value="gaming">PC Gaming</option>
+            <option value="office">PC Văn phòng</option>
+            <option value="creative">PC Đồ họa</option>
+          </select>
+        </div>
+        <div>
+          <label for="filter-brand">Nền tảng CPU</label>
+          <select class="form-select product-filter" id="filter-brand">
+            <option value="">Tất cả</option>
+            <option>Intel</option>
+            <option>AMD</option>
+          </select>
+        </div>
+        <div>
+          <label for="filter-price">Khoảng giá</label>
+          <select class="form-select product-filter" id="filter-price">
+            <option value="">Tất cả mức giá</option>
+            <option value="low">Dưới 15 triệu</option>
+            <option value="mid">15 – 25 triệu</option>
+            <option value="high">Trên 25 triệu</option>
+          </select>
+        </div>
+        <div>
+          <label for="sort-products">Sắp xếp</label>
+          <select class="form-select product-filter" id="sort-products">
+            <option value="">Mặc định</option>
+            <option value="asc">Giá tăng dần</option>
+            <option value="desc">Giá giảm dần</option>
+            <option value="name">Tên A – Z</option>
+          </select>
+        </div>
+        <button id="reset-filters" class="btn btn-light">Đặt lại</button>
+      </div>
+      <div class="listing-toolbar">
+        <strong id="result-count" role="status"> </strong>
+        <span class="muted">Cấu hình và giá mẫu</span>
+      </div>
+      <div id="product-grid" class="product-grid"></div>
+      <nav
+        id="pagination"
+        class="pagination-bar"
+        aria-label="Phân trang sản phẩm"
+      ></nav>
+    </main>
+    <div id="site-footer"></div>
+    <div id="notice" aria-live="polite"></div>
+    <script src="../js/jquery-3.7.1.min.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/products-data.js"></script>
+    <script src="../js/common.js"></script>
+    <script src="../js/validation.js"></script>
+    <script src="../js/products.js"></script>
+    <script src="../js/cart.js"></script>
+    <script src="../js/compare.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/checkout.js"></script>
+    <script src="../js/contact.js"></script>
+  </body>
+</html>
