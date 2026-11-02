@@ -441,6 +441,18 @@
       var spRaw = localStorage.getItem("spDangXem");
       var sp = spRaw ? JSON.parse(spRaw) : spMacDinh;
 
+      // LƯU SẢN PHẨM NÀY VÀO DANH SÁCH ĐÃ XEM GẦN ĐÂY
+      if (sp && sp.id) {
+        var daXem = JSON.parse(localStorage.getItem("spDaXem")) || [];
+        // Lọc bỏ ID này nếu đã từng có trước đó (để đưa lên vị trí đầu tiên)
+        daXem = daXem.filter(x => Number(x) !== Number(sp.id));
+        // Đẩy sản phẩm vừa xem lên vị trí số 1
+        daXem.unshift(Number(sp.id));
+        // Chỉ lưu tối đa 8 sản phẩm gần nhất
+        if (daXem.length > 8) daXem.pop();
+        localStorage.setItem("spDaXem", JSON.stringify(daXem));
+      }
+
       // Cập nhật title trình duyệt theo yêu cầu bài học
       document.title = sp.ten + " - Hệ Thống Bộ PC";
 
