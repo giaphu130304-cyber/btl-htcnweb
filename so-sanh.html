@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>So Sánh Sản Phẩm - Hệ Thống Bộ PC</title>
+  <link rel="stylesheet" href="css/style.css">
+  
+  <style>
+    /* ==========================================================================
+       CSS BẢNG SO SÁNH & SẢN PHẨM GỢI Ý (ĐỒNG BỘ LAYOUT CSS)
+       ========================================================================== */
+    .compare-page,
+    .compare-page * {
+      box-sizing: border-box !important;
+    }
+
+    .compare-page {
+      padding-top: 16px;
+      padding-bottom: 50px;
+      width: 100%;
+    }
+
+    .breadcrumb-nav .breadcrumb-list {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      list-style: none;
+      font-size: 0.85rem;
+      margin-bottom: 16px;
+      padding: 0;
+    }
+    .breadcrumb-nav a {
+      color: #6b7280;
+      text-decoration: none;
+    }
+    .breadcrumb-nav a:hover {
+      color: #dc2626;
+    }
+    .breadcrumb-nav .separator {
+      color: #9ca3af;
+    }
+    .breadcrumb-nav .active {
+      color: #111827;
+      font-weight: 600;
+    }
+
+    /* Khối thẻ trắng duy nhất */
+    .compare-single-card {
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      padding: 30px !important;
+      width: 100%;
+      margin-bottom: 30px;
+    }
+
+    .compare-top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #e5e7eb;
+      margin-bottom: 20px;
+      gap: 16px;
+    }
+
+    .compare-page-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #111827;
+      border-left: 4px solid #dc2626;
+      padding-left: 12px;
+      line-height: 1.2;
+    }
+
+    .compare-sub-title {
+      font-size: 0.85rem;
+      color: #6b7280;
+      margin-top: 4px;
+      padding-left: 12px;
+    }
+
+    .btn-clear-table {
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      color: #dc2626;
+      padding: 7px 14px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+
+    .btn-clear-table:hover {
+      background: #dc2626;
+      color: #ffffff;
+    }
+
+    /* Thanh chọn dropdown */
+    .compare-add-box {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: #f9fafb;
+      border: 1px dashed #d1d5db;
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin-bottom: 24px;
+    }
+
+    .add-box-label {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #374151;
+      white-space: nowrap;
+    }
+
+    .compare-select-input {
+      flex: 1;
+      padding: 8px 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      outline: none;
+      background-color: #ffffff;
+    }
+
+    .btn-trigger-add {
+      background: #dc2626;
+      color: #ffffff;
+      border: none;
+      border-radius: 6px;
+      padding: 8px 16px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    /* Bảng so sánh */
+    .compare-table-responsive {
+      width: 100%;
+      overflow-x: auto;
+    }
+
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+      min-width: 680px;
+    }
+
+    .compare-table th,
+    .compare-table td {
+      border: 1px solid #e5e7eb;
+      padding: 12px 14px;
+      text-align: center;
+      vertical-align: middle;
+      font-size: 0.88rem;
+    }
+
+    .compare-table .feature-col {
+      width: 22%;
+      background-color: #f9fafb;
+      font-weight: 700;
+      color: #374151;
+      text-align: left;
+    }
+
+    .compare-table .product-col {
+      width: 26%;
+      position: relative;
+      vertical-align: top;
+      padding-top: 14px;
+      padding-bottom: 14px;
+    }
+
+    .btn-remove-item {
+      display: inline-block;
+      background: #f3f4f6;
+      color: #6b7280;
+      border: 1px solid #e5e7eb;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+
+    .btn-remove-item:hover {
+      background: #fee2e2;
+      color: #dc2626;
+    }
+
+    .compare-thumb-wrap {
+      width: 110px;
+      height: 110px;
+      margin: 0 auto 10px;
+      background: #f8fafc;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px;
+    }
+
+    .compare-thumb-wrap img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    .compare-name {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #111827;
+      line-height: 1.35;
+      min-height: 40px;
+      margin-bottom: 6px;
+    }
+
+    .compare-price {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #dc2626;
+      margin-bottom: 10px;
+    }
+
+    .btn-action-view {
+      display: block;
+      width: 90%;
+      margin: 0 auto 6px;
+      padding: 6px 0;
+      background: #ffffff;
+      border: 1.5px solid #dc2626;
+      color: #dc2626;
+      font-weight: 700;
+      font-size: 0.82rem;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .btn-action-view:hover {
+      background: #fef2f2;
+    }
+
+    .btn-action-buy {
+      display: block;
+      width: 90%;
+      margin: 0 auto;
+      padding: 6px 0;
+      background: #dc2626;
+      border: none;
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 0.82rem;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    /* Khối Sản phẩm tương tự & Đã xem */
+    .related-section {
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      padding: 24px 30px;
+      margin-bottom: 24px;
+    }
+
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #111827;
+      border-left: 4px solid #dc2626;
+      padding-left: 10px;
+      margin-bottom: 18px;
+    }
+
+    .grid-products-sub {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .sub-product-card {
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, box-shadow 0.2s;
+      background: #fff;
+    }
+
+    .sub-product-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .sub-thumb {
+      width: 100%;
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+
+    .sub-thumb img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    .sub-title {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #111827;
+      line-height: 1.35;
+      margin-bottom: 6px;
+      height: 35px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .sub-price {
+      color: #dc2626;
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+    }
+
+    .sub-card-actions {
+      display: flex;
+      gap: 6px;
+    }
+
+    .btn-sub-compare {
+      flex: 1;
+      background: #fff;
+      border: 1px solid #dc2626;
+      color: #dc2626;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 5px 0;
+      cursor: pointer;
+    }
+
+    .btn-sub-compare:hover {
+      background: #dc2626;
+      color: #fff;
+    }
+
+    .empty-sub-notice {
+      grid-column: 1 / -1;
+      text-align: center;
+      color: #9ca3af;
+      font-size: 0.9rem;
+      padding: 16px 0;
+    }
+
+    @media (max-width: 991px) {
+      .grid-products-sub {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 576px) {
+      .grid-products-sub {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========================================================================
+       1. TOP HEADER (GIỮ NGUYÊN 100% BẢN GỐC CỦA NHÓM, TRỎ VỀ TRANGCHU.HTML)
+       ======================================================================== -->
+  <header id="top-header">
+    <div class="container header-wrapper">
+      
+      <!-- Brand Logo trỏ về trangchu.html -->
+      <a href="trangchu.html" class="brand-logo" aria-label="Bộ PC Trang Chủ">
+        <div class="logo-icon-wrapper">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="4" y="2" width="16" height="20" rx="2"></rect>
+            <circle cx="12" cy="14" r="3"></circle>
+            <line x1="12" y1="6" x2="12.01" y2="6"></line>
+            <line x1="9" y1="18" x2="15" y2="18"></line>
+          </svg>
+        </div>
+        <span class="logo-brand-name">Bộ PC</span>
+      </a>
+
+      <!-- Quick Search Bar -->
+      <div class="header-search">
+        <form class="search-form" action="#" method="get" role="search">
+          <input 
+            type="search" 
+            class="search-input" 
+            placeholder="Bạn cần tìm gì hôm nay? (PC Gaming, RTX 4070, Core i7...)" 
+            aria-label="Tìm kiếm sản phẩm"
+          >
+          <button type="submit" class="search-submit-btn" aria-label="Tìm kiếm">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </button>
+        </form>
+      </div>
+
+      <!-- Action Shortcuts Group -->
+      <div class="header-actions">
+        
+        <a href="#tracking" class="action-item" title="Tra cứu tiến độ giao hàng">
+          <div class="action-icon-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="1" y="3" width="15" height="13"></rect>
+              <polygon points="16 8 20 8 23 11 23 16 16 16 8"></polygon>
+              <circle cx="5.5" cy="18.5" r="2.5"></circle>
+              <circle cx="18.5" cy="18.5" r="2.5"></circle>
+            </svg>
+          </div>
+          <div class="action-text">
+            <span class="action-label">Tra cứu</span>
+            <span class="action-value">Đơn hàng</span>
+          </div>
+        </a>
+
+        <a href="gio-hang.html" class="action-item action-cart" title="Giỏ hàng của bạn">
+          <div class="action-icon-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <path d="M16 10a4 4 0 0 1-8 0"></path>
+            </svg>
+            <span class="cart-badge">0</span>
+          </div>
+          <div class="action-text">
+            <span class="action-label">Giỏ hàng</span>
+            <span class="action-value">(0) sản phẩm</span>
+          </div>
+        </a>
+
+        <a href="#account" class="action-item" title="Đăng nhập hoặc đăng ký tài khoản" data-auth-modal="login">
+          <div class="action-icon-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+          </div>
+          <div class="action-text">
+            <span class="action-label">Tài khoản</span>
+            <span class="action-value">Đăng nhập</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       2. NAVBAR / MEGA-MENU BAR (TRỎ SANG SAN-PHAM.HTML KÈM CỜ LỌC)
+       ======================================================================== -->
+  <nav id="main-navbar" aria-label="Điều hướng chính">
+    <div class="container navbar-container">
+      <ul class="nav-links-list">
+        <li class="nav-item">
+          <a href="san-pham.html" class="nav-link" onclick="localStorage.setItem('danhMucChonTuNgoai', 'pc-gaming')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2"></rect>
+              <line x1="8" y1="21" x2="16" y2="21"></line>
+              <line x1="12" y1="17" x2="12" y2="21"></line>
+            </svg>
+            <span>PC Gaming</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a href="san-pham.html" class="nav-link" onclick="localStorage.setItem('danhMucChonTuNgoai', 'pc-office')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2"></rect>
+              <path d="M8 21h8"></path>
+              <path d="M12 17v4"></path>
+            </svg>
+            <span>PC Văn Phòng</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a href="san-pham.html" class="nav-link" onclick="localStorage.setItem('danhMucChonTuNgoai', 'hardware')">
+            <span>Linh Kiện Máy Tính</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a href="san-pham.html" class="nav-link" onclick="localStorage.setItem('danhMucChonTuNgoai', 'monitors')">
+            <span>Màn Hình Gaming</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ========================================================================
+       3. BODY: SO SÁNH + SẢN PHẨM TƯƠNG TỰ & ĐÃ XEM
+       ======================================================================== -->
+  <main class="compare-page">
+    <div class="container">
+
+      <!-- Breadcrumbs trỏ về trangchu.html -->
+      <nav class="breadcrumb-nav" aria-label="breadcrumb">
+        <ol class="breadcrumb-list">
+          <li><a href="trangchu.html">Trang chủ</a></li>
+          <li><span class="separator">/</span></li>
+          <li><a href="san-pham.html">Sản phẩm</a></li>
+          <li><span class="separator">/</span></li>
+          <li class="active">So sánh cấu hình chi tiết</li>
+        </ol>
+      </nav>
+
+      
+      <!-- KHỐI 1: BẢNG SO SÁNH CHÍNH -->
+      <div class="compare-single-card">
+        
+        <div class="compare-top-bar" style="margin-bottom: 24px;">
+          <div>
+            <h1 class="compare-page-title">BẢNG ĐỐI CHIẾU CẤU HÌNH &amp; GIÁ</h1>
+            <p class="compare-sub-title">So sánh trực quan thông số kỹ thuật và giá bán giữa các cấu hình</p>
+          </div>
+        </div>
+
+        <!-- Khung chứa bảng so sánh (JS tự động render) -->
+        <div id="compareTableContainer" class="compare-table-responsive"></div>
+
+      </div>
+
+      <!-- KHỐI 2: SẢN PHẨM TƯƠNG TỰ (CÙNG DANH MỤC) -->
+      <section class="related-section">
+        <h2 class="section-title">Gợi ý sản phẩm tương tự cấu hình</h2>
+        <div id="gridRelatedProducts" class="grid-products-sub"></div>
+      </section>
+
+      <!-- KHỐI 3: SẢN PHẨM ĐÃ XEM GẦN ĐÂY -->
+      <section class="related-section">
+        <h2 class="section-title">Sản phẩm bạn đã xem gần đây</h2>
+        <div id="gridRecentProducts" class="grid-products-sub"></div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ========================================================================
+       4. FOOTER (GIỮ NGUYÊN 100% BẢN GỐC CỦA NHÓM)
+       ======================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-main-grid">
+        
+        <!-- Cột 1: Thông tin thương hiệu Bộ PC (Mock Data) -->
+        <div class="footer-col footer-col-brand">
+          <div class="footer-brand-title">
+            <span class="brand-text">BỘ PC</span>
+            <span class="brand-sub">Gaming &amp; Workstation</span>
+          </div>
+          <p class="footer-brand-desc">
+            Hệ thống chuyên cung cấp giải pháp máy tính để bàn, PC Gaming &amp; Workstation đồ họa tối ưu hiệu năng và độ ổn định cao.
+          </p>
+          <div class="footer-contact-info">
+            <p><strong>Hotline:</strong> <span class="hotline-val">1900 8888</span> (08:30 - 21:00)</p>
+            <p><strong>Email:</strong> support@bopc.vn</p>
+            <p><strong>Địa chỉ:</strong> Tòa nhà Bộ PC, Số 88 Phố Công Nghệ, Quận 1, TP. Hồ Chí Minh</p>
+          </div>
+        </div>
+
+        <!-- Cột 2: Sản phẩm & Danh mục -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Sản Phẩm &amp; Danh Mục</h4>
+          <ul class="footer-link-list">
+            <li><a href="san-pham.html">Bộ PC Gaming Intel &amp; AMD</a></li>
+            <li><a href="san-pham.html">Linh Kiện Máy Tính Cao Cấp</a></li>
+            <li><a href="san-pham.html">Màn Hình Đồ Họa &amp; Gaming</a></li>
+            <li><a href="san-pham.html">Tư Vấn Cấu Hình Theo Yêu Cầu</a></li>
+            <li><a href="#news">Tin Tức &amp; Đánh Giá Công Nghệ</a></li>
+          </ul>
+        </div>
+
+        <!-- Cột 3: Chính sách khách hàng -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Chính Sách Khách Hàng</h4>
+          <ul class="footer-link-list">
+            <li><a href="#warranty">Chính Sách Bảo Hành 36 Tháng</a></li>
+            <li><a href="#returns">Chính Sách Đổi Mới 1 Đổi 1</a></li>
+            <li><a href="#shipping">Chính Sách Giao Hàng Hỏa Tốc</a></li>
+            <li><a href="#installment">Hỗ Trợ Mua Trả Góp 0%</a></li>
+            <li><a href="#privacy">Chính Sách Bảo Mật Thông Tin</a></li>
+          </ul>
+        </div>
+
+        <!-- Cột 4: Kết nối & Thanh toán -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Kết Nối &amp; Thanh Toán</h4>
+          
+          <div class="social-icons-group">
+            <a href="#facebook" class="social-badge" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+              </svg>
+            </a>
+            <a href="#youtube" class="social-badge" aria-label="YouTube">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0-.46-5.33z"></path>
+                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="#111827"></polygon>
+              </svg>
+            </a>
+            <a href="#tiktok" class="social-badge" aria-label="TikTok">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path>
+              </svg>
+            </a>
+            <a href="#zalo" class="social-badge" aria-label="Zalo OA">
+              <span style="font-size: 12px; font-weight: 800;">Zalo</span>
+            </a>
+          </div>
+
+          <h5 class="footer-sub-title">Hình Thức Thanh Toán</h5>
+          <div class="badge-grid">
+            <span class="partner-chip">VISA</span>
+            <span class="partner-chip">MasterCard</span>
+            <span class="partner-chip">VNPAY</span>
+            <span class="partner-chip">MoMo</span>
+            <span class="partner-chip">VietQR</span>
+          </div>
+
+          <div class="cert-seals">
+            <div class="seal-ssl">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+              </svg>
+              <span>Bảo Mật SSL 256-bit</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Legal & Copyright Bar -->
+      <div class="footer-bottom-bar">
+        <div class="footer-bottom-inner">
+          <p class="copyright-text">
+            <strong>&copy; 2026 BỘ PC.</strong> Bản quyền thuộc về Dự án Bộ PC - Hệ thống bán lẻ máy tính &amp; linh kiện.
+          </p>
+          <p class="mock-data-note">
+            Thông tin doanh nghiệp mô phỏng (Mock Data) • Phục vụ mục đích học tập &amp; phát triển
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/auth-modal.js"></script>
+
+  <!-- ========================================================================
+       5. JAVASCRIPT XỬ LÝ SO SÁNH & GỢI Ý SẢN PHẨM (TRỎ ĐÚNG CHITIET.HTML)
+       ======================================================================== -->
+  <script>
+    // Dữ liệu mẫu đồng bộ với js/san-pham.js
+    var dsSanPham = [
+      { id: 1, ten: "Bộ PC Gaming ASUS TUF Core i5-13400F / RAM 16GB / RTX 4060 8GB", hang: "ASUS", danhMuc: "pc-gaming", ts1: "i5-13400F", ts2: "RTX 4060 8GB", ts3: "RAM 16GB", giaCu: 23990000, giaMoi: 19990000, qua: "Tặng bàn phím cơ + Chuột Gaming", anh: "img/pc-gaming-1.jpg" },
+      { id: 2, ten: "Bộ PC Gaming MSI MAG Core i5-12400F / RAM 16GB / RTX 3060 12GB", hang: "MSI", danhMuc: "pc-gaming", ts1: "i5-12400F", ts2: "RTX 3060 12GB", ts3: "SSD 512GB", giaCu: 18990000, giaMoi: 15490000, qua: "Tặng lót chuột size lớn + Tai nghe", anh: "img/pc-gaming-2.jpg" },
+      { id: 3, ten: "Bộ PC Workstation Đồ Họa Core i7-14700K / 32GB DDR5 / RTX 4070 Super", hang: "Intel", danhMuc: "pc-gaming", ts1: "i7-14700K", ts2: "RTX 4070S", ts3: "RAM 32GB DDR5", giaCu: 43990000, giaMoi: 38490000, qua: "Tặng tản nhiệt nước AIO 360 RGB", anh: "img/pc-gaming-3.jpg" },
+      { id: 4, ten: "Màn hình Gaming LG UltraGear 27GS60F 27 inch FHD IPS 180Hz 1ms", hang: "LG", danhMuc: "monitors", ts1: "27 inch Full HD", ts2: "180Hz", ts3: "Tấm nền IPS 1ms", giaCu: 4990000, giaMoi: 3890000, qua: "Tặng cáp DisplayPort 1.4", anh: "img/monitor-1.jpg" },
+      { id: 5, ten: "VGA Gigabyte GeForce RTX 4060 WindForce OC 8GB GDDR6", hang: "Gigabyte", danhMuc: "hardware", ts1: "8GB GDDR6", ts2: "2 Fan tản nhiệt OC", ts3: "DLSS 3 thế hệ mới", giaCu: 9690000, giaMoi: 8190000, qua: "Giảm 200.000đ khi build kèm PC", anh: "img/vga-rtx.jpg" },
+      { id: 6, ten: "Bộ PC Văn Phòng ASUS ExpertCenter Core i3-12100 / RAM 8GB / SSD 256GB", hang: "ASUS", danhMuc: "pc-office", ts1: "i3-12100", ts2: "Intel UHD Graphics", ts3: "RAM 8GB / SSD 256GB", giaCu: 9490000, giaMoi: 7690000, qua: "Tặng bộ bàn phím + chuột văn phòng", anh: "img/pc-office-1.jpg" },
+      { id: 7, ten: "Bộ PC Gaming AMD Ryzen 5 5600X / RAM 16GB / RX 6600 8GB", hang: "AMD", danhMuc: "pc-gaming", ts1: "Ryzen 5 5600X", ts2: "Radeon RX 6600 8GB", ts3: "RAM 16GB DDR4", giaCu: 16490000, giaMoi: 13490000, qua: "Tặng tai nghe Gaming 7.1", anh: "img/pc-gaming-2.jpg" }
+    ];
+
+    // 1. LẤY MẢNG ID SO SÁNH
+    function layDsIdSoSanh() {
+  var duLieu = localStorage.getItem("danhSachSoSanh");
+  if (duLieu === null) {
+    var khoiTao = [1, 2];
+    localStorage.setItem("danhSachSoSanh", JSON.stringify(khoiTao));
+    return khoiTao;
+  }
+  return JSON.parse(duLieu) || [];
+}
+
+    
+    // 3. RENDER BẢNG SO SÁNH (CỘT ĐẦU: "Sản phẩm", BỎ GIÁ CŨ & QUÀ TẶNG)
+    // 3. RENDER BẢNG SO SÁNH (XỬ LÝ RIÊNG TRƯỜNG HỢP 0 SẢN PHẨM VÀ 1 SẢN PHẨM)
+    function renderBangSoSanh() {
+      var listIds = layDsIdSoSanh();
+      var container = document.getElementById("compareTableContainer");
+      if (!container) return;
+
+      // TRƯỜNG HỢP 1: XÓA HẾT (0 SẢN PHẨM)
+      if (listIds.length === 0) {
+        container.innerHTML = `
+          <div style="text-align: center; padding: 48px 16px; background: #f9fafb; border-radius: 8px; border: 1px dashed #d1d5db; margin: 10px 0;">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="1.8" style="margin-bottom: 12px;">
+              <rect x="2" y="3" width="20" height="14" rx="2"></rect>
+              <line x1="8" y1="21" x2="16" y2="21"></line>
+              <line x1="12" y1="17" x2="12" y2="21"></line>
+            </svg>
+            <h3 style="font-size: 1.1rem; color: #374151; margin-bottom: 6px; font-weight: 700;">Chưa có sản phẩm nào trong bảng so sánh</h3>
+            <p style="color: #6b7280; font-size: 0.9rem; margin-bottom: 16px;">
+              Hãy chọn sản phẩm từ danh mục hoặc thanh tìm kiếm để bắt đầu đối chiếu cấu hình.
+            </p>
+            <a href="san-pham.html" style="display: inline-block; padding: 8px 18px; background: #dc2626; color: #fff; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 0.88rem;">
+              Khám phá danh sách sản phẩm
+            </a>
+          </div>
+        `;
+        if (typeof renderSanPhamTuongTu === "function") renderSanPhamTuongTu([]);
+        return;
+      }
+
+      var items = [];
+      listIds.forEach(function (id) {
+        var sp = dsSanPham.find(item => item.id === Number(id));
+        if (sp) items.push(sp);
+      });
+
+      var isSingle = items.length === 1;
+
+      // TẠO CẤU TRÚC BẢNG
+      var html = `<table class="compare-table"><thead><tr><th class="feature-col">Sản phẩm</th>`;
+
+      // Cột các sản phẩm hiện có
+      items.forEach(function (sp) {
+        html += `
+          <th class="product-col">
+            <button type="button" class="btn-remove-item" onclick="xoaMotSp(${sp.id})" title="Bỏ sản phẩm này">&times; Xóa cột</button>
+            <div class="compare-thumb-wrap">
+              <img src="${sp.anh}" alt="${sp.ten}">
+            </div>
+            <div class="compare-name">${sp.ten}</div>
+            <div class="compare-price">${sp.giaMoi.toLocaleString("vi-VN")}₫</div>
+            <button type="button" class="btn-action-view" onclick="xemChiTiet(${sp.id})">Chi tiết cấu hình</button>
+            <button type="button" class="btn-action-buy" onclick="themNhanhVaoGio(${sp.id})">+ Thêm giỏ hàng</button>
+          </th>
+        `;
+      });
+
+      // TRƯỜNG HỢP 2: NẾU CÒN ĐÚNG 1 SẢN PHẨM -> HIỆN THÊM CỘT GỢI Ý KẾ BÊN
+      if (isSingle) {
+        html += `
+          <th class="product-col" style="background: #fafafa; border: 2px dashed #e5e7eb; vertical-align: middle;">
+            <div style="padding: 24px 12px; color: #6b7280;">
+              <div style="font-weight: 700; color: #111827; margin-bottom: 6px; font-size: 0.95rem;">Thêm sản phẩm đối chiếu</div>
+              <p style="font-size: 0.8rem; margin-bottom: 12px;">Chọn một máy từ danh mục để bắt đầu so sánh</p>
+              <a href="san-pham.html" style="display: inline-block; background: #fff; border: 1px solid #dc2626; color: #dc2626; font-weight: 600; padding: 6px 14px; border-radius: 4px; font-size: 0.8rem; text-decoration: none;">
+                + Chọn từ danh mục
+              </a>
+            </div>
+          </th>
+        `;
+      }
+
+      html += `</tr></thead><tbody>`;
+
+      // Hàng: Hãng sản xuất
+      html += `<tr><td class="feature-col">Hãng sản xuất</td>`;
+      items.forEach(sp => { html += `<td><strong>${sp.hang}</strong></td>`; });
+      if (isSingle) html += `<td style="color: #9ca3af; font-style: italic; background: #fafafa;">Chưa chọn</td>`;
+      html += `</tr>`;
+
+      // Hàng: Phân loại danh mục
+      html += `<tr><td class="feature-col">Phân loại danh mục</td>`;
+      items.forEach(sp => {
+        var catName = "PC Gaming";
+        if (sp.danhMuc === "pc-office") catName = "PC Văn Phòng";
+        else if (sp.danhMuc === "hardware") catName = "Linh Kiện Rời";
+        else if (sp.danhMuc === "monitors") catName = "Màn Hình Gaming";
+        html += `<td>${catName}</td>`;
+      });
+      if (isSingle) html += `<td style="color: #9ca3af; font-style: italic; background: #fafafa;">Chưa chọn</td>`;
+      html += `</tr>`;
+
+      // Hàng: CPU / Kích thước (ts1)
+      html += `<tr><td class="feature-col">Vi xử lý / Kích thước</td>`;
+      items.forEach(sp => { html += `<td><strong>${sp.ts1}</strong></td>`; });
+      if (isSingle) html += `<td style="color: #9ca3af; font-style: italic; background: #fafafa;">Chưa chọn</td>`;
+      html += `</tr>`;
+
+      // Hàng: Card đồ họa / Tần số quét (ts2)
+      html += `<tr><td class="feature-col">Card đồ họa / Tần số quét</td>`;
+      items.forEach(sp => { html += `<td>${sp.ts2}</td>`; });
+      if (isSingle) html += `<td style="color: #9ca3af; font-style: italic; background: #fafafa;">Chưa chọn</td>`;
+      html += `</tr>`;
+
+      // Hàng: Bộ nhớ / Tấm nền (ts3)
+      html += `<tr><td class="feature-col">RAM / Bộ nhớ lưu trữ</td>`;
+      items.forEach(sp => { html += `<td>${sp.ts3}</td>`; });
+      if (isSingle) html += `<td style="color: #9ca3af; font-style: italic; background: #fafafa;">Chưa chọn</td>`;
+      html += `</tr>`;
+
+      // Hàng: Bảo hành
+      html += `<tr><td class="feature-col">Chế độ bảo hành</td>`;
+      items.forEach(() => { html += `<td>36 Tháng chính hãng (1 đổi 1)</td>`; });
+      if (isSingle) html += `<td style="color: #9ca3af; font-style: italic; background: #fafafa;">Chưa chọn</td>`;
+      html += `</tr>`;
+
+      html += `</tbody></table>`;
+      container.innerHTML = html;
+
+      if (typeof renderSanPhamTuongTu === "function") renderSanPhamTuongTu(items);
+    }
+
+    // 4. HIỂN THỊ SẢN PHẨM TƯƠNG TỰ
+    function renderSanPhamTuongTu(itemsDangSoSanh) {
+      var grid = document.getElementById("gridRelatedProducts");
+      if (!grid) return;
+
+      var danhMucList = itemsDangSoSanh.map(item => item.danhMuc);
+      var currentIds = itemsDangSoSanh.map(item => item.id);
+
+      var tuongTu = dsSanPham.filter(function (sp) {
+        return danhMucList.includes(sp.danhMuc) && !currentIds.includes(sp.id);
+      });
+
+      if (tuongTu.length === 0) {
+        tuongTu = dsSanPham.filter(sp => !currentIds.includes(sp.id)).slice(0, 4);
+      } else {
+        tuongTu = tuongTu.slice(0, 4);
+      }
+
+      if (tuongTu.length === 0) {
+        grid.innerHTML = '<div class="empty-sub-notice">Không có sản phẩm tương tự nào khác.</div>';
+        return;
+      }
+
+      var html = "";
+      tuongTu.forEach(function (sp) {
+        html += `
+          <div class="sub-product-card">
+            <div class="sub-thumb" onclick="xemChiTiet(${sp.id})">
+              <img src="${sp.anh}" alt="${sp.ten}">
+            </div>
+            <div class="sub-title" onclick="xemChiTiet(${sp.id})" title="${sp.ten}">${sp.ten}</div>
+            <div class="sub-price">${sp.giaMoi.toLocaleString("vi-VN")}₫</div>
+            <div class="sub-card-actions">
+              <button type="button" class="btn-sub-compare" onclick="themNhanhVaoSoSanh(${sp.id})">+ Thêm so sánh</button>
+            </div>
+          </div>
+        `;
+      });
+      grid.innerHTML = html;
+    }
+
+    // HIỂN THỊ SẢN PHẨM ĐÃ XEM GẦN ĐÂY (ƯU TIÊN CÁI VỪA XEM LÊN ĐẦU)
+    function renderSanPhamDaXem() {
+      var grid = document.getElementById("gridRecentProducts");
+      if (!grid) return;
+
+      var daXemIds = JSON.parse(localStorage.getItem("spDaXem")) || [];
+
+      // Nếu người dùng thực sự chưa xem món nào thì thông báo nhẹ
+      if (daXemIds.length === 0) {
+        grid.innerHTML = '<div class="empty-sub-notice">Bạn chưa xem sản phẩm nào gần đây. Hãy khám phá thêm các bộ PC nhé!</div>';
+        return;
+      }
+
+      var spList = [];
+      // Lấy đúng theo thứ tự đã lưu trong mảng (cái mới nhất nằm ở index 0)
+      daXemIds.forEach(function(id) {
+        var sp = dsSanPham.find(item => item.id === Number(id));
+        if (sp) spList.push(sp);
+      });
+
+      var html = "";
+      // Lấy tối đa 4 sản phẩm mới nhất vừa xem để hiển thị
+      spList.slice(0, 4).forEach(function (sp) {
+        html += `
+          <div class="sub-product-card">
+            <div class="sub-thumb" onclick="xemChiTiet(${sp.id})">
+              <img src="${sp.anh}" alt="${sp.ten}">
+            </div>
+            <div class="sub-title" onclick="xemChiTiet(${sp.id})" title="${sp.ten}">${sp.ten}</div>
+            <div class="sub-price">${sp.giaMoi.toLocaleString("vi-VN")}₫</div>
+            <div class="sub-card-actions">
+              <button type="button" class="btn-sub-compare" onclick="themNhanhVaoSoSanh(${sp.id})">+ Thêm so sánh</button>
+            </div>
+          </div>
+        `;
+      });
+      grid.innerHTML = html;
+    }
+
+    // 6. THAO TÁC SỰ KIỆN
+    function themNhanhVaoSoSanh(id) {
+      var list = layDsIdSoSanh();
+      if (list.includes(id)) {
+        alert("Sản phẩm này đã có trong bảng so sánh!");
+        return;
+      }
+      if (list.length >= 3) {
+        alert("Chỉ so sánh tối đa 3 sản phẩm cùng lúc!");
+        return;
+      }
+      list.push(id);
+      localStorage.setItem("danhSachSoSanh", JSON.stringify(list));
+      renderBangSoSanh();
+      window.scrollTo({ top: 120, behavior: 'smooth' });
+    }
+
+    
+
+    function xoaMotSp(id) {
+  var list = layDsIdSoSanh().filter(item => Number(item) !== Number(id));
+  localStorage.setItem("danhSachSoSanh", JSON.stringify(list));
+  renderBangSoSanh();
+}
+
+    function xoaTatCaSoSanh() {
+      if (confirm("Làm trống toàn bộ bảng so sánh?")) {
+        localStorage.setItem("danhSachSoSanh", JSON.stringify([]));
+        renderBangSoSanh();
+      }
+    }
+
+    // CHUYỂN ĐÚNG SANG FILE CHITIET.HTML
+    function xemChiTiet(id) {
+      var sp = dsSanPham.find(item => item.id === id);
+      if (sp) {
+        localStorage.setItem("spDangXem", JSON.stringify(sp));
+        
+        var daXem = JSON.parse(localStorage.getItem("spDaXem")) || [];
+        daXem = daXem.filter(x => x !== id);
+        daXem.unshift(id);
+        localStorage.setItem("spDaXem", JSON.stringify(daXem));
+
+        // Đường dẫn chuẩn theo file thực tế của bạn
+        window.location.href = "chitiet.html";
+      }
+    }
+
+    function themNhanhVaoGio(id) {
+      var sp = dsSanPham.find(item => item.id === id);
+      if (!sp) return;
+
+      var gio = JSON.parse(localStorage.getItem("gioHangBoPC")) || [];
+      var timThay = false;
+
+      for (var i = 0; i < gio.length; i++) {
+        if (gio[i].id === sp.id) {
+          gio[i].soLuong += 1;
+          timThay = true;
+          break;
+        }
+      }
+
+      if (!timThay) {
+        gio.push({ id: sp.id, ten: sp.ten, gia: sp.giaMoi, anh: sp.anh, soLuong: 1 });
+      }
+
+      localStorage.setItem("gioHangBoPC", JSON.stringify(gio));
+      capNhatBadgeGio();
+      alert("Đã thêm [" + sp.ten + "] vào giỏ hàng!");
+    }
+
+    function capNhatBadgeGio() {
+      var gio = JSON.parse(localStorage.getItem("gioHangBoPC")) || [];
+      var tong = 0;
+      for (var i = 0; i < gio.length; i++) tong += gio[i].soLuong;
+      var badge = document.querySelector(".cart-badge");
+      var chuGio = document.querySelector(".action-cart .action-value");
+      if (badge) badge.innerText = tong;
+      if (chuGio) chuGio.innerText = "(" + tong + ") sản phẩm";
+    }
+
+    window.addEventListener("DOMContentLoaded", function () {
+      
+      renderBangSoSanh();
+      renderSanPhamDaXem();
+      capNhatBadgeGio();
+    });
+  </script>
+</body>
+</html>
